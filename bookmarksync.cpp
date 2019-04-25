@@ -7,13 +7,16 @@ BookmarkSync::BookmarkSync(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Init KDE places widget
+    // Init KDE places code
+    /*
     kdeList = ui->kdeFavouritesList;
     kdePlaces = new KFilePlacesModel(this);
-    kdeList->setModel(kdePlaces);
+    kdeFilterModel = new KDEPlaceFilterProxyModel(kdePlaces, this);
+    kdeList->setModel(kdeFilterModel);
 
-    // TODO: init GTK places widget
+    // TODO: init GTK places code
     gtkList = ui->gtkFavouritesList;
+    */
 }
 
 BookmarkSync::~BookmarkSync()
@@ -21,6 +24,18 @@ BookmarkSync::~BookmarkSync()
     delete ui;
 }
 
+void BookmarkSync::syncFrom(BookmarkSyncBackend* sourceBackend) {
+    return; //stub
+}
+void BookmarkSync::addPlaceAllExcept(BookmarkSyncBackend* backend, Place place) {
+    return; //stub
+}
+void BookmarkSync::removePlaceAllExcept(BookmarkSyncBackend* backend, Place place) {
+    return; //stub
+}
+
+/*
 void BookmarkSync::onKDEListClicked(QModelIndex idx) {
     qDebug() << "selected place with URL " << kdePlaces->url(idx);
 }
+*/

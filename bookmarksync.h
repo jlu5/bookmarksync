@@ -2,6 +2,9 @@
 #define BOOKMARKSYNCMAINWINDOW_H
 
 #include "kdeplacefilterproxymodel.h"
+#include "place.h"
+#include "bookmarksyncbackend.h"
+
 #include <KFilePlacesModel>
 #include <QMainWindow>
 #include <QDebug>
@@ -19,15 +22,23 @@ public:
     explicit BookmarkSync(QWidget* parent = nullptr);
     ~BookmarkSync();
 
+    // Synchronization functions
+    void syncFrom(BookmarkSyncBackend* backend);
+    void addPlaceAllExcept(BookmarkSyncBackend* backend, Place place);
+    void removePlaceAllExcept(BookmarkSyncBackend* backend, Place place);
+
+/*
 public slots:
     void onKDEListClicked(QModelIndex idx);
-
+*/
 private:
     Ui::BookmarkSyncMainWindow* ui;
 
     KFilePlacesModel* kdePlaces;
-    QListView* kdeList;
-    QListView* gtkList;
+    KDEPlaceFilterProxyModel* kdeFilterModel;
+    //QListView* kdeList;
+    //QListView* gtkList;
 };
 
 #endif // BOOKMARKSYNCMAINWINDOW_H
+

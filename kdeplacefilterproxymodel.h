@@ -3,17 +3,17 @@
 
 #include <QSortFilterProxyModel>
 #include <KFilePlacesModel>
+#include <QDebug>
+#include <QAbstractItemModelTester>
 
 class KDEPlaceFilterProxyModel : public QSortFilterProxyModel
 {
 public:
-    KDEPlaceFilterProxyModel(QObject* parent = nullptr, KFilePlacesModel* source = nullptr);
+    KDEPlaceFilterProxyModel(KFilePlacesModel* sourceModel, QObject* parent = nullptr);
 
 protected:
     bool filterAcceptsRow(int sourceRow, const QModelIndex& sourceParent) const override;
 
-private:
-    KFilePlacesModel* source;
 };
 
 #endif // NONSYSTEMPLACEFILTERPROXYMODEL_H
