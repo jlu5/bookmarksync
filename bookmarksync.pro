@@ -26,13 +26,15 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        bookmarksyncmainwindow.cpp
+    kdeplacefilterproxymodel.cpp \
+    bookmarksync.cpp
 
 HEADERS += \
-        bookmarksyncmainwindow.h
+    kdeplacefilterproxymodel.h \
+    bookmarksync.h
 
 FORMS += \
-        bookmarksyncmainwindow.ui
+    bookmarksync.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,7 +1,7 @@
-#include "bookmarksyncmainwindow.h"
-#include "ui_bookmarksyncmainwindow.h"
+#include "bookmarksync.h"
+#include "ui_bookmarksync.h"
 
-BookmarkSyncMainWindow::BookmarkSyncMainWindow(QWidget *parent) :
+BookmarkSync::BookmarkSync(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BookmarkSyncMainWindow)
 {
@@ -16,11 +16,11 @@ BookmarkSyncMainWindow::BookmarkSyncMainWindow(QWidget *parent) :
     gtkList = ui->gtkFavouritesList;
 }
 
-BookmarkSyncMainWindow::~BookmarkSyncMainWindow()
+BookmarkSync::~BookmarkSync()
 {
     delete ui;
 }
 
-void BookmarkSyncMainWindow::onKDEListClicked(QModelIndex idx) {
+void BookmarkSync::onKDEListClicked(QModelIndex idx) {
     qDebug() << "selected place with URL " << kdePlaces->url(idx);
 }
