@@ -8,14 +8,15 @@
 
 class BookmarkSync; // forward declaration
 
-class BookmarkSyncBackend
+class BookmarkSyncBackend : public QObject
 {
+    Q_OBJECT
+
 public:
     BookmarkSyncBackend(BookmarkSync* syncParent, QListView* widget);
-    virtual ~BookmarkSyncBackend() = 0;
 
     // Returns a list of places currently defined in this backend
-    virtual QStringList getPlaces() = 0;
+    virtual QVector<Place> getPlaces() = 0;
 
     // Adds a place to this backend
     virtual void addPlace(Place place) = 0;
@@ -26,16 +27,16 @@ public:
     //TODO
     //virtual void rearrange(?);
 
+protected:
+    BookmarkSync* parent;
+    QListView* widget;
+
     // Signal handlers
     void onAdd(Place place);
     void onRemove(Place place);
 
     // TODO
     // void onRearrange(?)
-
-protected:
-    BookmarkSync* parent;
-    QListView* widget;
 };
 
 #endif // BOOKMARKSYNCBACKEND_H

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui KIOCore KIOFileWidgets testlib
+QT       += core gui KIOCore KIOFileWidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,13 +28,15 @@ SOURCES += \
         main.cpp \
     kdeplacefilterproxymodel.cpp \
     bookmarksync.cpp \
-    bookmarksyncbackend.cpp
+    bookmarksyncbackend.cpp \
+    bookmarksynckdebackend.cpp
 
 HEADERS += \
     kdeplacefilterproxymodel.h \
     bookmarksync.h \
     bookmarksyncbackend.h \
-    place.h
+    place.h \
+    bookmarksynckdebackend.h
 
 FORMS += \
     bookmarksync.ui

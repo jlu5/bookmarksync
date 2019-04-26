@@ -1,4 +1,5 @@
 #include "bookmarksync.h"
+#include "bookmarksynckdebackend.h"
 #include "ui_bookmarksync.h"
 
 BookmarkSync::BookmarkSync(QWidget *parent) :
@@ -7,16 +8,9 @@ BookmarkSync::BookmarkSync(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Init KDE places code
-    /*
     kdeList = ui->kdeFavouritesList;
-    kdePlaces = new KFilePlacesModel(this);
-    kdeFilterModel = new KDEPlaceFilterProxyModel(kdePlaces, this);
-    kdeList->setModel(kdeFilterModel);
-
-    // TODO: init GTK places code
     gtkList = ui->gtkFavouritesList;
-    */
+    backends.append(new BookmarkSyncKDEBackend(this, kdeList));
 }
 
 BookmarkSync::~BookmarkSync()

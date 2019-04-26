@@ -6,16 +6,17 @@ KDEPlaceFilterProxyModel::KDEPlaceFilterProxyModel(KFilePlacesModel* sourceModel
 }
 
 
-// Filter function: returns true for places of type Place (local directories) and Remote (remote locations: SFTP, SMB, etc.)
-// We are only interested in exporting these locations to GTK+.
+// Filter function: returns true for non-System places of type Place (local directories) and Remote (remote locations: SFTP, SMB, etc.)
+// Only these are we interested in exporting to GTK+.
 bool KDEPlaceFilterProxyModel::filterAcceptsRow(
         int sourceRow, const QModelIndex &sourceParent) const {
-    qDebug() << "Should we filter index " << sourceParent;
-
     KFilePlacesModel* source = static_cast<KFilePlacesModel*>(sourceModel());
+
     QModelIndex targetIndex = source->index(sourceRow, 0, sourceParent);
+
     KFilePlacesModel::GroupType groupType = source->groupType(targetIndex);
+    KBookmark bookmark = source->bookmarkForIndex(targetIndex);
     return (groupType == KFilePlacesModel::GroupType::PlacesType
             || groupType == KFilePlacesModel::GroupType::RemoteType)
-            && true; // todo check issystem tag
+            && bookmark.metaDataItem("isSystemItem") != "true";
 };

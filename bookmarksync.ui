@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>640</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,7 +46,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>640</width>
      <height>31</height>
     </rect>
    </property>
@@ -55,25 +55,5 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>kdeFavouritesList</sender>
-   <signal>clicked(QModelIndex)</signal>
-   <receiver>BookmarkSyncMainWindow</receiver>
-   <slot>onKDEListClicked(QModelIndex)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>295</x>
-     <y>166</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>149</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
- <slots>
-  <slot>onKDEListClicked(QModelIndex)</slot>
- </slots>
+ <connections/>
 </ui>

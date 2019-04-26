@@ -2,10 +2,16 @@
 #define PLACE_H
 
 #include <QString>
+#include <QUrl>
 
 struct Place {
     QString label;
-    QString target;
+    QUrl target;
+
+    // Allow implicit conversion to QString, for debugging purposes
+    operator QString() const {
+        return "Place(" + label + " => " + target.toString() + ")";
+    }
 };
 
 #endif // PLACE_H

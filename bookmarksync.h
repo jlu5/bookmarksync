@@ -1,11 +1,9 @@
 #ifndef BOOKMARKSYNCMAINWINDOW_H
 #define BOOKMARKSYNCMAINWINDOW_H
 
-#include "kdeplacefilterproxymodel.h"
 #include "place.h"
 #include "bookmarksyncbackend.h"
 
-#include <KFilePlacesModel>
 #include <QMainWindow>
 #include <QDebug>
 #include <QListView>
@@ -34,10 +32,9 @@ public slots:
 private:
     Ui::BookmarkSyncMainWindow* ui;
 
-    KFilePlacesModel* kdePlaces;
-    KDEPlaceFilterProxyModel* kdeFilterModel;
-    //QListView* kdeList;
-    //QListView* gtkList;
+    QListView* kdeList;
+    QVector<BookmarkSyncBackend*> backends;
+    QListView* gtkList;
 };
 
 #endif // BOOKMARKSYNCMAINWINDOW_H
