@@ -3,13 +3,14 @@
 
 #include <bookmarksyncbackend.h>
 #include "kdeplacefilterproxymodel.h"
+#include "backendwidget.h"
 
 #include <KFilePlacesModel>
 
 class BookmarkSyncKDEBackend : public BookmarkSyncBackend
 {
 public:
-    BookmarkSyncKDEBackend(BookmarkSync* syncParent, QListView* widget);
+    BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* widget);
 
     QVector<Place> getPlaces();
     void addPlace(Place place);

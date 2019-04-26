@@ -3,6 +3,7 @@
 
 #include "place.h"
 #include "bookmarksyncbackend.h"
+#include "backendwidget.h"
 
 #include <QMainWindow>
 #include <QDebug>
@@ -32,7 +33,8 @@ public slots:
 private:
     Ui::BookmarkSyncMainWindow* ui;
 
-    QListView* kdeList;
+    BackendWidget* kdeBackendWidget;
+    BackendWidget* gtkBackendWidget;
     QVector<BookmarkSyncBackend*> backends;
     QListView* gtkList;
 };

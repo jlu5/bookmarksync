@@ -8,9 +8,9 @@ BookmarkSync::BookmarkSync(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    kdeList = ui->kdeFavouritesList;
-    gtkList = ui->gtkFavouritesList;
-    backends.append(new BookmarkSyncKDEBackend(this, kdeList));
+    kdeBackendWidget = ui->kdeBackendWidget;
+    gtkBackendWidget = ui->gtkBackendWidget;
+    backends.append(new BookmarkSyncKDEBackend(this, kdeBackendWidget));
 }
 
 BookmarkSync::~BookmarkSync()

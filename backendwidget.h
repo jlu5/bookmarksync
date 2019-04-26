@@ -2,6 +2,7 @@
 #define BACKENDWIDGET_H
 
 #include <QWidget>
+#include <QListView>
 
 namespace Ui {
 class BackendWidget;
@@ -14,6 +15,7 @@ class BackendWidget : public QWidget
 public:
     explicit BackendWidget(QWidget *parent = nullptr);
     ~BackendWidget();
+    QListView* listView;
 
 private:
     Ui::BackendWidget *ui;

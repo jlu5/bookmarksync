@@ -1,7 +1,7 @@
 #include "bookmarksyncbackend.h"
 #include "bookmarksync.h"
 
-BookmarkSyncBackend::BookmarkSyncBackend(BookmarkSync* parent, QListView* widget) :
+BookmarkSyncBackend::BookmarkSyncBackend(BookmarkSync* parent, BackendWidget* widget) :
     parent(parent), widget(widget)
 {
 }

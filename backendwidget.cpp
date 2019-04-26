@@ -6,6 +6,7 @@ BackendWidget::BackendWidget(QWidget *parent) :
     ui(new Ui::BackendWidget)
 {
     ui->setupUi(this);
+    listView = ui->listView;
 }
 
 BackendWidget::~BackendWidget()

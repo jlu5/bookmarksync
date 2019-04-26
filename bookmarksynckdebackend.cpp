@@ -2,14 +2,15 @@
 #include "bookmarksynckdebackend.h"
 #include "place.h"
 
-BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, QListView* widget) :
+BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* widget) :
     BookmarkSyncBackend(syncParent, widget)
 {
 
     model = new KFilePlacesModel(widget);
     filteredModel = new KDEPlaceFilterProxyModel(model, widget);
-    widget->setModel(filteredModel);
-    QObject::connect(widget, &QListView::clicked, this, &BookmarkSyncKDEBackend::onItemClicked);
+    listView = widget->listView;
+    listView->setModel(filteredModel);
+    QObject::connect(listView, &QListView::clicked, this, &BookmarkSyncKDEBackend::onItemClicked);
 }
 
 

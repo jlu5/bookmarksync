@@ -15,16 +15,6 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QListView" name="gtkFavouritesList"/>
-    </item>
-    <item row="1" column="1">
-     <widget class="QListView" name="kdeFavouritesList">
-      <property name="dragDropMode">
-       <enum>QAbstractItemView::InternalMove</enum>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
      <widget class="QLabel" name="gtkLabel">
       <property name="text">
@@ -38,6 +28,12 @@
        <string>KDE</string>
       </property>
      </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="BackendWidget" name="kdeBackendWidget" native="true"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="BackendWidget" name="gtkBackendWidget" native="true"/>
     </item>
    </layout>
   </widget>
@@ -54,6 +50,14 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>BackendWidget</class>
+   <extends>QWidget</extends>
+   <header>backendwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

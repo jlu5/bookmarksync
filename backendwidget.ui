@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QListView" name="main"/>
+    <widget class="QListView" name="listView"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">

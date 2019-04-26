@@ -2,6 +2,7 @@
 #define BOOKMARKSYNCBACKEND_H
 
 #include "place.h"
+#include "backendwidget.h"
 
 #include <QStringList>
 #include <QListView>
@@ -13,7 +14,7 @@ class BookmarkSyncBackend : public QObject
     Q_OBJECT
 
 public:
-    BookmarkSyncBackend(BookmarkSync* syncParent, QListView* widget);
+    BookmarkSyncBackend(BookmarkSync* syncParent, BackendWidget* widget);
 
     // Returns a list of places currently defined in this backend
     virtual QVector<Place> getPlaces() = 0;
@@ -29,7 +30,8 @@ public:
 
 protected:
     BookmarkSync* parent;
-    QListView* widget;
+    BackendWidget* widget;
+    QListView* listView;
 
     // Signal handlers
     void onAdd(Place place);
