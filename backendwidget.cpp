@@ -6,7 +6,12 @@ BackendWidget::BackendWidget(QWidget *parent) :
     ui(new Ui::BackendWidget)
 {
     ui->setupUi(this);
+
+    // Export our widgets
     listView = ui->listView;
+    addButton = ui->addButton;
+    editButton = ui->editButton;
+    removeButton = ui->removeButton;
 }
 
 BackendWidget::~BackendWidget()

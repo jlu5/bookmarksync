@@ -30,7 +30,8 @@ SOURCES += \
     bookmarksync.cpp \
     bookmarksyncbackend.cpp \
     bookmarksynckdebackend.cpp \
-    backendwidget.cpp
+    backendwidget.cpp \
+    placeeditdialog.cpp
 
 HEADERS += \
     kdeplacefilterproxymodel.h \
@@ -38,11 +39,13 @@ HEADERS += \
     bookmarksyncbackend.h \
     place.h \
     bookmarksynckdebackend.h \
-    backendwidget.h
+    backendwidget.h \
+    placeeditdialog.h
 
 FORMS += \
     bookmarksync.ui \
-    backendwidget.ui
+    backendwidget.ui \
+    placeeditdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

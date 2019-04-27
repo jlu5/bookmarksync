@@ -32,7 +32,15 @@ QVector<Place> BookmarkSyncKDEBackend::getPlaces() {
 
 // Adds a place to this backend
 void BookmarkSyncKDEBackend::addPlace(Place place) {
-    return;
+    QString iconName = KIO::iconNameForUrl(place.target);
+    model->addPlace(place.label, place.target);
+}
+
+void BookmarkSyncKDEBackend::editPlace(int index, Place place) {
+    // Get the index in the master unfiltered KDE places list
+    QModelIndex realIndex = filteredModel->mapToSource(filteredModel->index(index, 0));
+    QString iconName = KIO::iconNameForUrl(place.target);
+    model->editPlace(realIndex, place.label, place.target, iconName);
 }
 
 // Removes a place from this backend
@@ -40,7 +48,19 @@ void BookmarkSyncKDEBackend::removePlace(Place place) {
     return;
 }
 
-void BookmarkSyncKDEBackend::onItemClicked(const QModelIndex index) {
-    qDebug() << "DEBUG getPlaces output: " << getPlaces();
+void BookmarkSyncKDEBackend::onEditButtonClicked() {
+    QModelIndex current = listView->currentIndex();
+    QString label = current.data().toString();
+    QUrl url = current.data(KFilePlacesModel::UrlRole).toUrl();
+    qDebug() << "Current item is" << current.row() << "with" << label << url;
+
+    PlaceEditDialog dialog(label, url);
+    if (dialog.exec()) {
+        qDebug() << "Made new place" << label << "," << url;
+        editPlace(current.row(), Place{label, url});
+    }
 }
 
+void BookmarkSyncKDEBackend::onItemClicked(const QModelIndex index) {
+    qDebug() << "DEBUG BookmarkSyncKDEBackend getPlaces output: " << getPlaces();
+}

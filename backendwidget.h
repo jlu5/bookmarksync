@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QListView>
+#include <QToolButton>
 
 namespace Ui {
 class BackendWidget;
@@ -16,6 +17,9 @@ public:
     explicit BackendWidget(QWidget *parent = nullptr);
     ~BackendWidget();
     QListView* listView;
+    QToolButton* addButton;
+    QToolButton* editButton;
+    QToolButton* removeButton;
 
 private:
     Ui::BackendWidget *ui;

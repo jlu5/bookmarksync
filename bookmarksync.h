@@ -22,6 +22,7 @@ public:
     ~BookmarkSync();
 
     // Synchronization functions
+    bool isSyncReady();
     void syncFrom(BookmarkSyncBackend* backend);
     void addPlaceAllExcept(BookmarkSyncBackend* backend, Place place);
     void removePlaceAllExcept(BookmarkSyncBackend* backend, Place place);

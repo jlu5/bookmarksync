@@ -18,6 +18,10 @@ BookmarkSync::~BookmarkSync()
     delete ui;
 }
 
+bool BookmarkSync::isSyncReady() {
+    return false; // stub
+}
+
 void BookmarkSync::syncFrom(BookmarkSyncBackend* sourceBackend) {
     return; //stub
 }
@@ -27,9 +31,3 @@ void BookmarkSync::addPlaceAllExcept(BookmarkSyncBackend* backend, Place place) 
 void BookmarkSync::removePlaceAllExcept(BookmarkSyncBackend* backend, Place place) {
     return; //stub
 }
-
-/*
-void BookmarkSync::onKDEListClicked(QModelIndex idx) {
-    qDebug() << "selected place with URL " << kdePlaces->url(idx);
-}
-*/
