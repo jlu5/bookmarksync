@@ -18,7 +18,7 @@ public:
     QVector<Place> getPlaces();
     void addPlace(Place place);
     void editPlace(int index, Place newData);
-    void removePlace(Place place);
+    void removePlace(int index);
     void onEditButtonClicked();
 
 public slots:

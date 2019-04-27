@@ -30,6 +30,13 @@ QVector<Place> BookmarkSyncKDEBackend::getPlaces() {
     return items;
 }
 
+// Returns a place instance given the model index
+Place BookmarkSyncKDEBackend::getPlaceAtIndex(const QModelIndex& index) {
+    QString label = index.data().toString();
+    QUrl url = index.data(KFilePlacesModel::UrlRole).toUrl();
+    return Place{label, url};
+}
+
 // Adds a place to this backend
 void BookmarkSyncKDEBackend::addPlace(Place place) {
     QString iconName = KIO::iconNameForUrl(place.target);
@@ -44,15 +51,9 @@ void BookmarkSyncKDEBackend::editPlace(int index, Place place) {
 }
 
 // Removes a place from this backend
-void BookmarkSyncKDEBackend::removePlace(Place place) {
-    return;
-}
-
-// Returns a place instance given the model index
-Place BookmarkSyncKDEBackend::getPlaceAtIndex(const QModelIndex& index) {
-    QString label = index.data().toString();
-    QUrl url = index.data(KFilePlacesModel::UrlRole).toUrl();
-    return Place{label, url};
+void BookmarkSyncKDEBackend::removePlace(int index) {
+    QModelIndex realIndex = filteredModel->mapToSource(filteredModel->index(index, 0));
+    model->removePlace(realIndex);
 }
 
 void BookmarkSyncKDEBackend::onItemClicked(const QModelIndex index) {

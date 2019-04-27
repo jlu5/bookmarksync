@@ -28,7 +28,7 @@ public:
     virtual void editPlace(int index, Place newData) = 0;
 
     // Removes a place from this backend
-    virtual void removePlace(Place place) = 0;
+    virtual void removePlace(int index) = 0;
 
     //TODO
     //virtual void rearrange(?);

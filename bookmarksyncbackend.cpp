@@ -18,6 +18,7 @@ void BookmarkSyncBackend::onRemove(Place place) {
     parent->removePlaceAllExcept(this, place);
 }
 
+// BUTTON HANDLER: Add a new place to the list
 void BookmarkSyncBackend::onAddButtonClicked() {
     QString label;
     QUrl url;
@@ -29,19 +30,23 @@ void BookmarkSyncBackend::onAddButtonClicked() {
     }
 }
 
+// BUTTON HANDLER: Edit the currently selected place
 void BookmarkSyncBackend::onEditButtonClicked() {
     QModelIndex current = listView->currentIndex();
-    Place currentPlace = getPlaceAtIndex(current);
+    Place place = getPlaceAtIndex(current);
 
-    qDebug() << "Current item has index" << current.row() << ":" << currentPlace.label << currentPlace.target;
+    qDebug() << "Current item has index" << current.row() << ":" << place.label << place.target;
 
-    PlaceEditDialog dialog(currentPlace.label, currentPlace.target);
+    // Here, we can just modify the struct in place
+    PlaceEditDialog dialog(place.label, place.target);
     if (dialog.exec()) {
-        qDebug() << "Edited place" << currentPlace.label << "," << currentPlace.target;
-        editPlace(current.row(), currentPlace);
+        qDebug() << "Edited place" << place.label << "," << place.target;
+        editPlace(current.row(), place);
     }
 }
 
+// BUTTON HANDLER: Remove the currently selected place
 void BookmarkSyncBackend::onRemoveButtonClicked() {
-    return;
+    QModelIndex current = listView->currentIndex();
+    removePlace(current.row());
 }
