@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QUrl>
+#include <QLineEdit>
+#include <QMessageBox>
 
 namespace Ui {
 class PlaceEditDialog;
@@ -14,14 +16,18 @@ class PlaceEditDialog : public QDialog
 
 public:
     explicit PlaceEditDialog(QString& label, QUrl& target, QWidget *parent = nullptr);
-    ~PlaceEditDialog();
+    ~PlaceEditDialog() override;
 
 private:
     Ui::PlaceEditDialog *ui;
     QString& label;
     QUrl& target;
+    QLineEdit* nameInput;
+    QLineEdit* targetInput;
 
     void savePlaceInfo();
+
+    void done(int r) override;
 };
 
 #endif // PLACEEDITDIALOG_H

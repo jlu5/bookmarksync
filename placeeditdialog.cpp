@@ -8,9 +8,12 @@ PlaceEditDialog::PlaceEditDialog(QString& label, QUrl& target, QWidget *parent) 
     target(target)
 {
     ui->setupUi(this);
+    nameInput = ui->nameInput;
+    targetInput = ui->targetInput;
+
     // Preload our input fields with the given variables
-    ui->nameInput->setText(label);
-    ui->targetInput->setText(target.toString());
+    nameInput->setText(label);
+    targetInput->setText(target.toString());
 
     QObject::connect(this, &QDialog::accepted, this, &PlaceEditDialog::savePlaceInfo);
 }
@@ -22,6 +25,21 @@ PlaceEditDialog::~PlaceEditDialog()
 
 void PlaceEditDialog::savePlaceInfo() {
     // Saves place info into the target vars we were given
-    label = ui->nameInput->text();
-    target = QUrl::fromUserInput(ui->targetInput->text());
+    label = nameInput->text();
+    target = QUrl::fromUserInput(targetInput->text());
+}
+
+
+// Verify that the inputed label and target are valid
+void PlaceEditDialog::done(int r)
+{
+    if (r == QDialog::Accepted &&
+            (nameInput->text().isEmpty() || targetInput->text().isEmpty())) {
+        QMessageBox::critical(this, tr("Configure Place Error"),
+                              tr("Place name and target must not be empty."));
+    }
+    else {
+        QDialog::done(r);
+        return;
+    }
 }
