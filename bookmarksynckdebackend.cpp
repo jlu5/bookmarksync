@@ -48,17 +48,11 @@ void BookmarkSyncKDEBackend::removePlace(Place place) {
     return;
 }
 
-void BookmarkSyncKDEBackend::onEditButtonClicked() {
-    QModelIndex current = listView->currentIndex();
-    QString label = current.data().toString();
-    QUrl url = current.data(KFilePlacesModel::UrlRole).toUrl();
-    qDebug() << "Current item is" << current.row() << "with" << label << url;
-
-    PlaceEditDialog dialog(label, url);
-    if (dialog.exec()) {
-        qDebug() << "Made new place" << label << "," << url;
-        editPlace(current.row(), Place{label, url});
-    }
+// Returns a place instance given the model index
+Place BookmarkSyncKDEBackend::getPlaceAtIndex(const QModelIndex& index) {
+    QString label = index.data().toString();
+    QUrl url = index.data(KFilePlacesModel::UrlRole).toUrl();
+    return Place{label, url};
 }
 
 void BookmarkSyncKDEBackend::onItemClicked(const QModelIndex index) {

@@ -30,9 +30,18 @@ void BookmarkSyncBackend::onAddButtonClicked() {
 }
 
 void BookmarkSyncBackend::onEditButtonClicked() {
+    QModelIndex current = listView->currentIndex();
+    Place currentPlace = getPlaceAtIndex(current);
 
+    qDebug() << "Current item has index" << current.row() << ":" << currentPlace.label << currentPlace.target;
+
+    PlaceEditDialog dialog(currentPlace.label, currentPlace.target);
+    if (dialog.exec()) {
+        qDebug() << "Edited place" << currentPlace.label << "," << currentPlace.target;
+        editPlace(current.row(), currentPlace);
+    }
 }
 
 void BookmarkSyncBackend::onRemoveButtonClicked() {
-
+    return;
 }

@@ -38,11 +38,19 @@ protected:
     BackendWidget* widget;
     QListView* listView;
 
+    virtual Place getPlaceAtIndex(const QModelIndex& index) = 0;
+
     // Signal handlers
     void onAdd(Place place);
     void onRemove(Place place);
+
+    // BUTTON HANDLER: Add a new place to the list
     void onAddButtonClicked();
-    virtual void onEditButtonClicked() = 0;
+
+    // BUTTON HANDLER: Edit the currently selected place
+    void onEditButtonClicked();
+
+    // BUTTON HANDLER: Remove the currently selected place
     void onRemoveButtonClicked();
 
     // TODO

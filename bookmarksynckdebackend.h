@@ -24,6 +24,9 @@ public:
 public slots:
     void onItemClicked(const QModelIndex index);
 
+protected:
+    Place getPlaceAtIndex(const QModelIndex& index);
+
 private:    
     KFilePlacesModel* model;
     KDEPlaceFilterProxyModel* filteredModel;
