@@ -12,19 +12,47 @@ BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, Backend
     listView->setModel(model);
     // Try to load ~/.config/gtk-3.0/bookmarks
     QDir targetFolder = QDir(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
-    target = targetFolder.relativeFilePath("gtk-3.0/bookmarks");
+    target = targetFolder.filePath("gtk-3.0/bookmarks");
+    qDebug() << "targetFolder" << targetFolder << "target" << target;
     // TODO: make sure target is actually readable
-    monitor = new QFileSystemWatcher(QStringList(target));
+    monitor = new QFileSystemWatcher();
+    monitor->addPath(target);
 
     QObject::connect(monitor, &QFileSystemWatcher::fileChanged, this, &BookmarkSyncGTKBackend::onFileChanged);
+    loadPlaces();
 }
 
-void BookmarkSyncGTKBackend::onFileChanged(const QString &path) {
-    qDebug() << "Got file changed!";
+void BookmarkSyncGTKBackend::onFileChanged(const QString &) {
+    qDebug() << "Got file changed!" << monitor->files();
+    monitor->addPath(target); // Why is this needed?
+    loadPlaces();
 }
 
-void loadPlaces() {
-    // TODO
+void BookmarkSyncGTKBackend::loadPlaces() {
+    QFile file(target, this);
+    QVector<Place> places;
+    qDebug() << "try to open " << target;
+    if (file.open(QIODevice::ReadOnly)) {
+        QList<QByteArray> lines = file.readAll().split('\n');
+        qDebug() << "OK reading all lines from " << target;
+        for (const QByteArray& line: lines) {
+            if (line.isEmpty()) {
+                continue;
+            }
+            // We use UTF8 on linux, right?
+            QString decoded = QString::fromUtf8(line);
+            QString target = decoded.section(" ", 0, 0); // split on first space
+            QString label = decoded.section(" ", 1);
+            if (label.isEmpty()) {
+                // Label can be empty, in which case we use the target folder name
+                label = target.section("/", -1);
+            }
+            //qDebug() << "Read place with target" << target << ", label" << label;
+            places.append(Place{label, target});
+        }
+        qDebug() << "Calling model->replace";
+        model->replace(places);
+    }
 }
 
 // Returns a place instance given the model index

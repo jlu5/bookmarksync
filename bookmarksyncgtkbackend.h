@@ -23,7 +23,7 @@ protected:
 private:
     PlacesItemModel* model;
     QFileSystemWatcher* monitor;
-    private QString target;
+    QString target;
 
     void loadPlaces();
 

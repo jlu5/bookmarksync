@@ -1,5 +1,6 @@
 #include "bookmarksync.h"
 #include "bookmarksynckdebackend.h"
+#include "bookmarksyncgtkbackend.h"
 #include "ui_bookmarksync.h"
 
 BookmarkSync::BookmarkSync(QWidget *parent) :
@@ -11,6 +12,7 @@ BookmarkSync::BookmarkSync(QWidget *parent) :
     kdeBackendWidget = ui->kdeBackendWidget;
     gtkBackendWidget = ui->gtkBackendWidget;
     backends.append(new BookmarkSyncKDEBackend(this, kdeBackendWidget));
+    backends.append(new BookmarkSyncGTKBackend(this, gtkBackendWidget));
 }
 
 BookmarkSync::~BookmarkSync()

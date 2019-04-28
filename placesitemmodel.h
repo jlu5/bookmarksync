@@ -14,6 +14,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
+    Qt::ItemFlags flags(const QModelIndex &index) const override;
 
     // Add a place
     void addPlace(int index, Place place);
@@ -32,6 +33,8 @@ public:
 
 private:
     QVector<Place> places;
+
+    //static QString internalMimetype(const PlacesItemModel* const m);
 };
 
 #endif // PLACESITEMMODEL_H

@@ -57,7 +57,7 @@ protected:
     void onRemoveButtonClicked();
 
     // DEBUG
-    void onItemClicked(const QModelIndex index);
+    void onItemClicked(const QModelIndex& index);
     /*
     // LIST VIEW HANDLER: handles row additions
     void onRowsInserted(const QModelIndex &parent, int first, int last);

@@ -8,9 +8,7 @@ BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, Backend
 
     model = new KFilePlacesModel(widget);
     filteredModel = new KDEPlaceFilterProxyModel(model, widget);
-    listView = widget->listView;
     listView->setModel(filteredModel);
-    QObject::connect(listView, &QListView::clicked, this, &BookmarkSyncKDEBackend::onItemClicked);
 }
 
 

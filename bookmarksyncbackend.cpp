@@ -4,6 +4,15 @@
 BookmarkSyncBackend::BookmarkSyncBackend(BookmarkSync* parent, BackendWidget* widget) :
     parent(parent), widget(widget)
 {
+    listView = widget->listView;
+
+    listView->setDragDropMode(QAbstractItemView::InternalMove);
+    listView->setSelectionMode(QAbstractItemView::SingleSelection);
+    listView->setDragEnabled(true);
+    listView->viewport()->setAcceptDrops(true);
+    listView->setDropIndicatorShown(true);
+
+    QObject::connect(listView, &QListView::clicked, this, &BookmarkSyncBackend::onItemClicked);
     qDebug() << "Binding buttons...";
     QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onAddButtonClicked);
     QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onEditButtonClicked);
@@ -76,6 +85,7 @@ void BookmarkSyncBackend::onRemoveButtonClicked() {
 }
 
 
-void BookmarkSyncBackend::onItemClicked(const QModelIndex index) {
-    qDebug() << "DEBUG getPlaces output: " << getPlaces();
+void BookmarkSyncBackend::onItemClicked(const QModelIndex& index) {
+    //qDebug() << "DEBUG getPlaces output: " << getPlaces();
+    qDebug() << "Got place" << getPlaceAtIndex(index);
 }
