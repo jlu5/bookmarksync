@@ -61,6 +61,27 @@ Qt::ItemFlags PlacesItemModel::flags(const QModelIndex &index) const {
     }
 }
 
+bool PlacesItemModel::insertRows(int row, int count, const QModelIndex &parent) {
+    beginInsertRows(parent, row, row+count);
+    while (--count > 0) {
+        if (row >= rowCount()) {
+            places.append(Place{"", QUrl()});
+        } else {
+            places.insert(row, Place{"", QUrl()});
+        }
+    }
+    endInsertRows();
+    return true;
+}
+bool PlacesItemModel::removeRows(int row, int count, const QModelIndex &parent) {
+    beginRemoveRows(parent, row, row+count);
+    while (--count > 0) {
+        places.remove(row);
+    }
+    endRemoveRows();
+    return true;
+}
+
 /*
 static QString internalMimetype(const PlacesItemModel* const m) {
     return "application/x-bookmarksync-internal-" + QString::number(reinterpret_cast<long>(m));
@@ -70,6 +91,7 @@ static QString internalMimetype(const PlacesItemModel* const m) {
 // Adds a place to this backend
 void PlacesItemModel::addPlace(int index, Place place) {
     if (insertRow(index)) {
+        qDebug() << "inserted a row";
         QModelIndex realIndex = this->index(index);
         setData(realIndex, place.label, Qt::DisplayRole);
         setData(realIndex, place.target, Qt::UserRole);

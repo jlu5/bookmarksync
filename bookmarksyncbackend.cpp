@@ -86,6 +86,6 @@ void BookmarkSyncBackend::onRemoveButtonClicked() {
 
 
 void BookmarkSyncBackend::onItemClicked(const QModelIndex& index) {
-    //qDebug() << "DEBUG getPlaces output: " << getPlaces();
+    qDebug() << "DEBUG getPlaces output: " << getPlaces();
     qDebug() << "Got place" << getPlaceAtIndex(index);
 }
