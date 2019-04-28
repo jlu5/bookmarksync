@@ -1,9 +1,8 @@
 #ifndef BOOKMARKSYNCKDEBACKEND_H
 #define BOOKMARKSYNCKDEBACKEND_H
 
-#include <bookmarksyncbackend.h>
+#include "bookmarksyncbackend.h"
 #include "kdeplacefilterproxymodel.h"
-#include "backendwidget.h"
 #include "kio/global.h"
 
 #include <KFilePlacesModel>
@@ -15,17 +14,14 @@ public:
     BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* widget);
 
     // Reimplemented functions
-    QVector<Place> getPlaces();
+    QVector<Place> getPlaces() const;
     void addPlace(Place place);
+    void addPlace(int index, Place place);
     void editPlace(int index, Place newData);
     void removePlace(int index);
-    void onEditButtonClicked();
-
-public slots:
-    void onItemClicked(const QModelIndex index);
 
 protected:
-    Place getPlaceAtIndex(const QModelIndex& index);
+    Place getPlaceAtIndex(const QModelIndex& index) const;
 
 private:    
     KFilePlacesModel* model;

@@ -15,7 +15,7 @@ BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, Backend
 
 
 // Returns a list of places currently defined in this backend
-QVector<Place> BookmarkSyncKDEBackend::getPlaces() {
+QVector<Place> BookmarkSyncKDEBackend::getPlaces() const {
     QVector<Place> items;
     int rows = filteredModel->rowCount();
     for (int i=0; i < rows; i++) {
@@ -31,7 +31,7 @@ QVector<Place> BookmarkSyncKDEBackend::getPlaces() {
 }
 
 // Returns a place instance given the model index
-Place BookmarkSyncKDEBackend::getPlaceAtIndex(const QModelIndex& index) {
+Place BookmarkSyncKDEBackend::getPlaceAtIndex(const QModelIndex& index) const {
     QString label = index.data().toString();
     QUrl url = index.data(KFilePlacesModel::UrlRole).toUrl();
     return Place{label, url};
@@ -40,7 +40,13 @@ Place BookmarkSyncKDEBackend::getPlaceAtIndex(const QModelIndex& index) {
 // Adds a place to this backend
 void BookmarkSyncKDEBackend::addPlace(Place place) {
     QString iconName = KIO::iconNameForUrl(place.target);
-    model->addPlace(place.label, place.target);
+    model->addPlace(place.label, place.target, iconName);
+}
+
+void BookmarkSyncKDEBackend::addPlace(int index, Place place) {
+    QModelIndex realIndex = filteredModel->mapToSource(filteredModel->index(index, 0));
+    QString iconName = KIO::iconNameForUrl(place.target);
+    model->addPlace(place.label, place.target, iconName, "BookmarkSync", realIndex);
 }
 
 void BookmarkSyncKDEBackend::editPlace(int index, Place place) {
@@ -54,8 +60,4 @@ void BookmarkSyncKDEBackend::editPlace(int index, Place place) {
 void BookmarkSyncKDEBackend::removePlace(int index) {
     QModelIndex realIndex = filteredModel->mapToSource(filteredModel->index(index, 0));
     model->removePlace(realIndex);
-}
-
-void BookmarkSyncKDEBackend::onItemClicked(const QModelIndex index) {
-    qDebug() << "DEBUG BookmarkSyncKDEBackend getPlaces output: " << getPlaces();
 }

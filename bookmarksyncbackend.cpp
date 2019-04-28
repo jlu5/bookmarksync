@@ -10,12 +10,36 @@ BookmarkSyncBackend::BookmarkSyncBackend(BookmarkSync* parent, BackendWidget* wi
     QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onRemoveButtonClicked);
 }
 
-void BookmarkSyncBackend::onAdd(Place place) {
-    parent->addPlaceAllExcept(this, place);
+void BookmarkSyncBackend::onAdd(int index, Place place) {
+    qDebug() << "got onAdd(" << index << place << ")";
+    if (parent->isSyncReady()) {
+        parent->addPlaceAllExcept(this, index, place);
+    }
 }
 
-void BookmarkSyncBackend::onRemove(Place place) {
-    parent->removePlaceAllExcept(this, place);
+void BookmarkSyncBackend::onRemove(int index) {
+    qDebug() << "got onRemove(" << index << ")";
+    if (parent->isSyncReady()) {
+        parent->removePlaceAllExcept(this, index);
+    }
+}
+
+void BookmarkSyncBackend::onEdit(int index, Place place) {
+    qDebug() << "got onEdit(" << index << place << ")";
+    /*
+    if (parent->isSyncReady()) {
+        parent->removePlaceAllExcept(this, index);
+    }
+    */
+}
+
+void BookmarkSyncBackend::onRearrange(int sourceIndex, int targetIndex) {
+    qDebug() << "got onRearrange(" << sourceIndex << targetIndex << ")";
+    /*
+    if (parent->isSyncReady()) {
+        parent->removePlaceAllExcept(this, index);
+    }
+    */
 }
 
 // BUTTON HANDLER: Add a new place to the list
@@ -49,4 +73,9 @@ void BookmarkSyncBackend::onEditButtonClicked() {
 void BookmarkSyncBackend::onRemoveButtonClicked() {
     QModelIndex current = listView->currentIndex();
     removePlace(current.row());
+}
+
+
+void BookmarkSyncBackend::onItemClicked(const QModelIndex index) {
+    qDebug() << "DEBUG getPlaces output: " << getPlaces();
 }

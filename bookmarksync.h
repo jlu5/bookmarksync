@@ -24,13 +24,9 @@ public:
     // Synchronization functions
     bool isSyncReady();
     void syncFrom(BookmarkSyncBackend* backend);
-    void addPlaceAllExcept(BookmarkSyncBackend* backend, Place place);
-    void removePlaceAllExcept(BookmarkSyncBackend* backend, Place place);
+    void addPlaceAllExcept(BookmarkSyncBackend* backend, int index, Place place);
+    void removePlaceAllExcept(BookmarkSyncBackend* backend, int index);
 
-/*
-public slots:
-    void onKDEListClicked(QModelIndex idx);
-*/
 private:
     Ui::BookmarkSyncMainWindow* ui;
 
