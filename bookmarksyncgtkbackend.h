@@ -26,6 +26,7 @@ private:
     QString target;
 
     void loadPlaces();
+    void writePlaces();
 
     void onFileChanged(const QString &path);
 };

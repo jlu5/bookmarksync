@@ -55,7 +55,7 @@ bool PlacesItemModel::setData(const QModelIndex &index, const QVariant &value, i
 Qt::ItemFlags PlacesItemModel::flags(const QModelIndex &index) const {
     Qt::ItemFlags flags = Qt::ItemNeverHasChildren | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
     if (index.isValid()) {
-        return flags | Qt::ItemIsDragEnabled | Qt::ItemIsEditable;
+        return flags | Qt::ItemIsDragEnabled;
     } else {
         return flags | Qt::ItemIsDropEnabled;
     }
@@ -91,7 +91,6 @@ static QString internalMimetype(const PlacesItemModel* const m) {
 // Adds a place to this backend
 void PlacesItemModel::addPlace(int index, Place place) {
     if (insertRow(index)) {
-        qDebug() << "inserted a row";
         QModelIndex realIndex = this->index(index);
         setData(realIndex, place.label, Qt::DisplayRole);
         setData(realIndex, place.target, Qt::UserRole);
@@ -115,7 +114,6 @@ void PlacesItemModel::removePlace(int index) {
 // Overwrite the existing model with the list of places
 void PlacesItemModel::replace(const QVector<Place>& newPlaces) {
     beginResetModel();
-    qDebug() << "resetting model?";
     places.clear();
     places = newPlaces; // copy places into our internal state
     endResetModel();

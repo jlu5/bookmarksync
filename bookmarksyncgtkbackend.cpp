@@ -33,14 +33,12 @@ void BookmarkSyncGTKBackend::loadPlaces() {
     QVector<Place> places;
     qDebug() << "try to open " << target;
     if (file.open(QIODevice::ReadOnly)) {
-        QList<QByteArray> lines = file.readAll().split('\n');
-        qDebug() << "OK reading all lines from " << target;
-        for (const QByteArray& line: lines) {
-            if (line.isEmpty()) {
-                continue;
-            }
-            // We use UTF8 on linux, right?
-            QString decoded = QString::fromUtf8(line);
+        QTextStream in(&file);
+        // We use UTF8 on linux, right?
+        in.setCodec("UTF-8");
+
+        while(!in.atEnd()) {
+            QString decoded = in.readLine();
             QString target = decoded.section(" ", 0, 0); // split on first space
             QString label = decoded.section(" ", 1);
             if (label.isEmpty()) {
@@ -50,9 +48,21 @@ void BookmarkSyncGTKBackend::loadPlaces() {
             //qDebug() << "Read place with target" << target << ", label" << label;
             places.append(Place{label, target});
         }
-        qDebug() << "Calling model->replace";
+
+        file.close();
         model->replace(places);
     }
+}
+
+void BookmarkSyncGTKBackend::writePlaces() {
+    QFile file(target);
+    if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+        QTextStream out(&file);
+        for (const Place& place: getPlaces()) {
+            out << place.target.toEncoded() << " " << place.label << '\n';
+        }
+    }
+    // don't need to explicitly refresh here, our file monitor should catch it
 }
 
 // Returns a place instance given the model index
@@ -66,16 +76,19 @@ void BookmarkSyncGTKBackend::addPlace(Place place) {
 }
 void BookmarkSyncGTKBackend::addPlace(int index, Place place) {
     model->addPlace(index, place);
+    writePlaces();
 }
 
 // Edits the place at index
 void BookmarkSyncGTKBackend::editPlace(int index, Place place) {
     model->editPlace(index, place);
+    writePlaces();
 }
 
 // Removes a place from this backend
 void BookmarkSyncGTKBackend::removePlace(int index) {
     model->removePlace(index);
+    writePlaces();
 }
 
 QVector<Place> BookmarkSyncGTKBackend::getPlaces() const {
