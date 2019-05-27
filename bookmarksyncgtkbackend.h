@@ -10,7 +10,7 @@ class BookmarkSyncGTKBackend : public BookmarkSyncBackend
 public:
     BookmarkSyncGTKBackend(BookmarkSync* syncParent, BackendWidget* widget);
 
-    // Reimplemented functions
+    // Implemented functions
     QVector<Place> getPlaces() const;
     void addPlace(Place place);
     void addPlace(int index, Place place);

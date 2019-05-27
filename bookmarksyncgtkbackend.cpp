@@ -20,6 +20,11 @@ BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, Backend
 
     QObject::connect(monitor, &QFileSystemWatcher::fileChanged, this, &BookmarkSyncGTKBackend::onFileChanged);
     loadPlaces();
+
+    QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onAddButtonClicked);
+    QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onEditButtonClicked);
+    QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onRemoveButtonClicked);
+    QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onSyncButtonClicked);
 }
 
 void BookmarkSyncGTKBackend::onFileChanged(const QString &) {

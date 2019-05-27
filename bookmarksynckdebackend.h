@@ -13,13 +13,17 @@ class BookmarkSyncKDEBackend : public BookmarkSyncBackend
 public:
     BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* widget);
 
-    // Reimplemented functions
+    // Implemented functions
     QVector<Place> getPlaces() const;
     void addPlace(Place place);
     void addPlace(int index, Place place);
     void editPlace(int index, Place newData);
     void removePlace(int index);
     void replace(const QVector<Place>& places);
+
+    // Overridden
+    void onAddButtonClicked();
+    void onEditButtonClicked();
 
 protected:
     Place getPlaceAtIndex(const QModelIndex& index) const;
