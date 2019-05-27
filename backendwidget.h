@@ -17,9 +17,7 @@ public:
     explicit BackendWidget(QWidget *parent = nullptr);
     ~BackendWidget();
     QListView* listView;
-    QToolButton* addButton;
-    QToolButton* editButton;
-    QToolButton* removeButton;
+    QToolButton *addButton, *editButton, *removeButton, *syncButton;
 
 private:
     Ui::BackendWidget *ui;

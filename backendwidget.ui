@@ -35,7 +35,7 @@
         <string>Add</string>
        </property>
        <property name="icon">
-        <iconset theme="add">
+        <iconset theme="list-add">
          <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
@@ -43,7 +43,7 @@
      <item>
       <widget class="QToolButton" name="editButton">
        <property name="text">
-        <string>...</string>
+        <string> Edit Selected</string>
        </property>
        <property name="icon">
         <iconset theme="edit">
@@ -54,11 +54,21 @@
      <item>
       <widget class="QToolButton" name="removeButton">
        <property name="text">
-        <string>...</string>
+        <string>Remove Selected</string>
        </property>
        <property name="icon">
-        <iconset theme="remove">
+        <iconset theme="list-remove">
          <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="syncButton">
+       <property name="text">
+        <string>Sync from this backend</string>
+       </property>
+       <property name="icon">
+        <iconset theme="view-refresh"/>
        </property>
       </widget>
      </item>

@@ -59,3 +59,13 @@ void BookmarkSyncKDEBackend::removePlace(int index) {
     QModelIndex realIndex = filteredModel->mapToSource(filteredModel->index(index, 0));
     model->removePlace(realIndex);
 }
+
+// Replaces all places in this backend with the given list
+void BookmarkSyncKDEBackend::replace(const QVector<Place>& places) {
+    while (filteredModel->rowCount() > 0) {
+        removePlace(0);
+    }
+    for (const Place& place: places) {
+        addPlace(place);
+    }
+}

@@ -17,6 +17,7 @@ BookmarkSyncBackend::BookmarkSyncBackend(BookmarkSync* parent, BackendWidget* wi
     QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onAddButtonClicked);
     QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onEditButtonClicked);
     QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onRemoveButtonClicked);
+    QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onSyncButtonClicked);
 }
 
 // BUTTON HANDLER: Add a new place to the list
@@ -52,6 +53,10 @@ void BookmarkSyncBackend::onRemoveButtonClicked() {
     removePlace(current.row());
 }
 
+// BUTTON HANDLER: Begin sync from this backend
+void BookmarkSyncBackend::onSyncButtonClicked() {
+    parent->syncFrom(this);
+}
 
 void BookmarkSyncBackend::onItemClicked(const QModelIndex& index) {
     qDebug() << "DEBUG getPlaces output: " << getPlaces();

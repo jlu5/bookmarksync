@@ -95,3 +95,8 @@ QVector<Place> BookmarkSyncGTKBackend::getPlaces() const {
     return model->getPlaces();
 }
 
+// Replaces all places in this backend with the given list
+void BookmarkSyncGTKBackend::replace(const QVector<Place>& places) {
+    model->replace(places);
+    writePlaces();
+}

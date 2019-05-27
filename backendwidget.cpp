@@ -12,6 +12,7 @@ BackendWidget::BackendWidget(QWidget *parent) :
     addButton = ui->addButton;
     editButton = ui->editButton;
     removeButton = ui->removeButton;
+    syncButton = ui->syncButton;
 }
 
 BackendWidget::~BackendWidget()

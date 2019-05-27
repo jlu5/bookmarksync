@@ -19,6 +19,7 @@ public:
     void addPlace(int index, Place place);
     void editPlace(int index, Place newData);
     void removePlace(int index);
+    void replace(const QVector<Place>& places);
 
 protected:
     Place getPlaceAtIndex(const QModelIndex& index) const;

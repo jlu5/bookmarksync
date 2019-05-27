@@ -4,6 +4,7 @@
 #include <QSortFilterProxyModel>
 #include <KFilePlacesModel>
 #include <QDebug>
+#include "place.h"
 
 class KDEPlaceFilterProxyModel : public QSortFilterProxyModel
 {

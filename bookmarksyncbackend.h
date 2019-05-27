@@ -31,6 +31,9 @@ public:
     // Removes a place from this backend
     virtual void removePlace(int index) = 0;
 
+    // Replaces all places in this backend with the given list
+    virtual void replace(const QVector<Place>& places) = 0;
+
 protected:
     BookmarkSync* parent;
     BackendWidget* widget;
@@ -46,6 +49,9 @@ protected:
 
     // BUTTON HANDLER: Remove the currently selected place
     void onRemoveButtonClicked();
+
+    // BUTTON HANDLER: Begin sync from this backend
+    void onSyncButtonClicked();
 
     // DEBUG
     void onItemClicked(const QModelIndex& index);

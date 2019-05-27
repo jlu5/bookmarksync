@@ -22,7 +22,7 @@ public:
     ~BookmarkSync();
 
     // Synchronization functions
-    bool isSyncReady();
+    //bool isSyncReady();
     void syncFrom(BookmarkSyncBackend* backend);
 
 private:
@@ -31,7 +31,6 @@ private:
     BackendWidget* kdeBackendWidget;
     BackendWidget* gtkBackendWidget;
     QVector<BookmarkSyncBackend*> backends;
-    QListView* gtkList;
 };
 
 #endif // BOOKMARKSYNCMAINWINDOW_H

@@ -20,10 +20,11 @@ BookmarkSync::~BookmarkSync()
     delete ui;
 }
 
-bool BookmarkSync::isSyncReady() {
-    return false; // stub
-}
-
 void BookmarkSync::syncFrom(BookmarkSyncBackend* sourceBackend) {
-    return; //stub
+    QVector<Place> places = sourceBackend->getPlaces();
+    for (BookmarkSyncBackend*& backend: backends) {
+        if (backend != sourceBackend) {
+            backend->replace(places);
+        }
+    }
 }
