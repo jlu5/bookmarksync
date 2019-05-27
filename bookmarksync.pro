@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui KIOCore KIOFileWidgets
+QT += testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -33,7 +34,8 @@ SOURCES += \
     backendwidget.cpp \
     placeeditdialog.cpp \
     bookmarksyncgtkbackend.cpp \
-    placesitemmodel.cpp
+    placesitemmodel.cpp \
+    placesitemmodeltest.cpp
 
 HEADERS += \
     kdeplacefilterproxymodel.h \
@@ -44,7 +46,8 @@ HEADERS += \
     backendwidget.h \
     placeeditdialog.h \
     bookmarksyncgtkbackend.h \
-    placesitemmodel.h
+    placesitemmodel.h \
+    placesitemmodeltest.h
 
 FORMS += \
     bookmarksync.ui \
