@@ -25,8 +25,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-TEMPLATE = subdirs
-SUBDIRS = src
+SOURCES += \
+        main.cpp \
+    kdeplacefilterproxymodel.cpp \
+    bookmarksync.cpp \
+    bookmarksyncbackend.cpp \
+    bookmarksynckdebackend.cpp \
+    backendwidget.cpp \
+    placeeditdialog.cpp \
+    bookmarksyncgtkbackend.cpp \
+    placesitemmodel.cpp \
+    placesitemmodeltest.cpp
+
+HEADERS += \
+    kdeplacefilterproxymodel.h \
+    bookmarksync.h \
+    bookmarksyncbackend.h \
+    place.h \
+    bookmarksynckdebackend.h \
+    backendwidget.h \
+    placeeditdialog.h \
+    bookmarksyncgtkbackend.h \
+    placesitemmodel.h \
+    placesitemmodeltest.h
+
+FORMS += \
+    bookmarksync.ui \
+    backendwidget.ui \
+    placeeditdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
