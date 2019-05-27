@@ -17,6 +17,7 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
+    bool moveRows(const QModelIndex &sourceParent, int sourceRow, int count, const QModelIndex &destinationParent, int destinationChild) override;
 
     // Add a place
     void addPlace(int index, Place place);

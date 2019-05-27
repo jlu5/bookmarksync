@@ -53,16 +53,15 @@ bool PlacesItemModel::setData(const QModelIndex &index, const QVariant &value, i
 }
 
 Qt::ItemFlags PlacesItemModel::flags(const QModelIndex &index) const {
-    Qt::ItemFlags flags = Qt::ItemNeverHasChildren | Qt::ItemIsEnabled | Qt::ItemIsSelectable;
     if (index.isValid()) {
-        return flags | Qt::ItemIsDragEnabled;
+        return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsDragEnabled;
     } else {
-        return flags | Qt::ItemIsDropEnabled;
+        return Qt::ItemIsDropEnabled;
     }
 }
 
 bool PlacesItemModel::insertRows(int row, int count, const QModelIndex &parent) {
-    beginInsertRows(parent, row, row+count);
+    beginInsertRows(parent, row, row+count-1);
     while (--count > 0) {
         if (row >= rowCount()) {
             places.append(Place{"", QUrl()});
@@ -73,8 +72,9 @@ bool PlacesItemModel::insertRows(int row, int count, const QModelIndex &parent) 
     endInsertRows();
     return true;
 }
+
 bool PlacesItemModel::removeRows(int row, int count, const QModelIndex &parent) {
-    beginRemoveRows(parent, row, row+count);
+    beginRemoveRows(parent, row, row+count-1);
     while (--count > 0) {
         places.remove(row);
     }
@@ -82,11 +82,21 @@ bool PlacesItemModel::removeRows(int row, int count, const QModelIndex &parent) 
     return true;
 }
 
-/*
-static QString internalMimetype(const PlacesItemModel* const m) {
-    return "application/x-bookmarksync-internal-" + QString::number(reinterpret_cast<long>(m));
+bool PlacesItemModel::moveRows(const QModelIndex &sourceParent, int sourceRow, int count, const QModelIndex &destinationParent, int destinationChild) {
+
+    if (count > 1) {
+        qWarning() << "Moving multiple items in PlacesItemModel is not supported yet";
+        return false;
+    }
+    if (sourceParent != destinationParent) {
+        qWarning() << "PlacesItemModel: Only internal move is supported";
+        return false; // Only internal move is supported
+    }
+    beginMoveRows(sourceParent, sourceRow, sourceRow, destinationParent, destinationChild);
+    places.move(sourceRow, destinationChild);
+    endMoveRows();
+    return true;
 }
-*/
 
 // Adds a place to this backend
 void PlacesItemModel::addPlace(int index, Place place) {

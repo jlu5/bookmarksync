@@ -22,8 +22,17 @@
      <property name="dragEnabled">
       <bool>true</bool>
      </property>
+     <property name="dragDropOverwriteMode">
+      <bool>false</bool>
+     </property>
      <property name="dragDropMode">
       <enum>QAbstractItemView::InternalMove</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectItems</enum>
+     </property>
+     <property name="movement">
+      <enum>QListView::Free</enum>
      </property>
     </widget>
    </item>
@@ -68,7 +77,8 @@
         <string>Sync from this backend</string>
        </property>
        <property name="icon">
-        <iconset theme="view-refresh"/>
+        <iconset theme="view-refresh">
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>
