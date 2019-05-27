@@ -27,9 +27,3 @@ bool BookmarkSync::isSyncReady() {
 void BookmarkSync::syncFrom(BookmarkSyncBackend* sourceBackend) {
     return; //stub
 }
-void BookmarkSync::addPlaceAllExcept(BookmarkSyncBackend* backend, int index, Place place) {
-    return; //stub
-}
-void BookmarkSync::removePlaceAllExcept(BookmarkSyncBackend* backend, int index) {
-    return; //stub
-}

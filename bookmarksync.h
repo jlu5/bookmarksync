@@ -24,8 +24,6 @@ public:
     // Synchronization functions
     bool isSyncReady();
     void syncFrom(BookmarkSyncBackend* backend);
-    void addPlaceAllExcept(BookmarkSyncBackend* backend, int index, Place place);
-    void removePlaceAllExcept(BookmarkSyncBackend* backend, int index);
 
 private:
     Ui::BookmarkSyncMainWindow* ui;
