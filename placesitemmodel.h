@@ -30,6 +30,7 @@ public:
     // Overwrite the existing model with the list of places
     void replace(const QVector<Place>& places);
 
+    Place getPlace(int index);
     Place getPlace(const QModelIndex& index);
     QVector<Place> getPlaces() const;
 

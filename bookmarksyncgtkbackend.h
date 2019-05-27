@@ -4,6 +4,7 @@
 #include "bookmarksyncbackend.h"
 #include "placesitemmodel.h"
 #include <QFileSystemWatcher>
+#include "vendor/diff_match_patch/diff_match_patch.h"
 
 class BookmarkSyncGTKBackend : public BookmarkSyncBackend
 {
@@ -24,9 +25,11 @@ private:
     PlacesItemModel* model;
     QFileSystemWatcher* monitor;
     QString target;
+    QString lastPlaces;
 
     void loadPlaces();
     void writePlaces();
+    void computeDiff(const QString& newPlacesText, const QVector<Place>& newPlaces);
 
     void onFileChanged(const QString &path);
 };
