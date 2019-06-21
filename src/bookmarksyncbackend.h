@@ -52,9 +52,6 @@ protected:
 
     // BUTTON HANDLER: Begin sync from this backend
     void onSyncButtonClicked();
-
-    // DEBUG
-    void onItemClicked(const QModelIndex& index);
 };
 
 #endif // BOOKMARKSYNCBACKEND_H

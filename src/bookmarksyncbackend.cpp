@@ -11,7 +11,6 @@ BookmarkSyncBackend::BookmarkSyncBackend(BookmarkSync* parent, BackendWidget* wi
     listView->setDragEnabled(true);
     listView->viewport()->setAcceptDrops(true);
     listView->setDropIndicatorShown(true);
-    QObject::connect(listView, &QListView::clicked, this, &BookmarkSyncBackend::onItemClicked);
 }
 
 // BUTTON HANDLER: Add a new place to the list
@@ -50,9 +49,4 @@ void BookmarkSyncBackend::onRemoveButtonClicked() {
 // BUTTON HANDLER: Begin sync from this backend
 void BookmarkSyncBackend::onSyncButtonClicked() {
     parent->syncFrom(this);
-}
-
-void BookmarkSyncBackend::onItemClicked(const QModelIndex& index) {
-    qDebug() << "DEBUG getPlaces output: " << getPlaces();
-    qDebug() << "Got place" << getPlaceAtIndex(index);
 }
