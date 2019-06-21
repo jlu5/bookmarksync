@@ -55,7 +55,7 @@
         <string> Edit Selected</string>
        </property>
        <property name="icon">
-        <iconset theme="edit">
+        <iconset theme="gtk-edit">
          <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
