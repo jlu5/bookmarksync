@@ -4,6 +4,9 @@
 
 #include "placesitemmodeltest.h"
 
+// Tentative icon... we should really find our own
+static QString ICON_NAME = "view-list";
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -26,6 +29,7 @@ int main(int argc, char *argv[])
         return 0;
     }
     BookmarkSync w;
+    w.setWindowIcon(QIcon::fromTheme(ICON_NAME));
     w.show();
 
     return a.exec();
