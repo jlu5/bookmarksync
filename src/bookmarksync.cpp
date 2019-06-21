@@ -33,5 +33,5 @@ void BookmarkSync::syncFrom(BookmarkSyncBackend* sourceBackend) {
 }
 
 void BookmarkSync::about() {
-    QMessageBox::about(this, tr("BookmarkSync"), tr("BookmarkSync is a simple utility to sync KDE and GTK bookmarks."));
+    QMessageBox::about(this, tr("BookmarkSync"), tr("BookmarkSync is a simple utility that manages KDE and GTK+ bookmarks."));
 }
