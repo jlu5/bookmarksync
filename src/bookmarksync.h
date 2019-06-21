@@ -25,6 +25,9 @@ public:
     //bool isSyncReady();
     void syncFrom(BookmarkSyncBackend* backend);
 
+protected:
+    void about();
+
 private:
     Ui::BookmarkSyncMainWindow* ui;
 

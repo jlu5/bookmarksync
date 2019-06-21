@@ -13,6 +13,9 @@ BookmarkSync::BookmarkSync(QWidget *parent) :
     gtkBackendWidget = ui->gtkBackendWidget;
     backends.append(new BookmarkSyncKDEBackend(this, kdeBackendWidget));
     backends.append(new BookmarkSyncGTKBackend(this, gtkBackendWidget));
+
+    QObject::connect(ui->actionAbout, &QAction::triggered, this, &BookmarkSync::about);
+    QObject::connect(ui->actionAboutQt, &QAction::triggered, &QApplication::aboutQt);
 }
 
 BookmarkSync::~BookmarkSync()
@@ -27,4 +30,8 @@ void BookmarkSync::syncFrom(BookmarkSyncBackend* sourceBackend) {
             backend->replace(places);
         }
     }
+}
+
+void BookmarkSync::about() {
+    QMessageBox::about(this, tr("BookmarkSync"), tr("BookmarkSync is a simple utility to sync KDE and GTK bookmarks."));
 }
