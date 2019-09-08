@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui KIOCore KIOFileWidgets
+QT       += core gui KIOCore KIOFileWidgets KIconThemes
 QT += testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
