@@ -6,9 +6,9 @@ BookmarkSync is a simple program that manages GTK+ and KDE bookmarks.
 
 ## Build instructions
 
-To compile BookmarkSync you will need qmake and the headers for Qt 5, KDE Plasma 5, and KIO.
+To compile BookmarkSync you will need qmake and the headers for KIO.
 
-On Debian and derivatives, this is `apt install qtbase5-dev libkf5iconthemes-dev libkf5kio-dev`.
+On Debian and derivatives, this is `apt install qtbase5-dev libkf5kio-dev`.
 
 Then,
 
