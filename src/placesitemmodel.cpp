@@ -27,7 +27,7 @@ QVariant PlacesItemModel::data(const QModelIndex &index, int role) const {
             QString iconName = KIO::iconNameForUrl(p.target);
             return QIcon::fromTheme(iconName);
         }
-        case Qt::UserRole:  // Define UserRole to be the place target
+        case Qt::EditRole:  // Define EditRole to be the place target
             return p.target;
         default:
             return QVariant();
@@ -43,9 +43,9 @@ bool PlacesItemModel::setData(const QModelIndex &index, const QVariant &value, i
             p.label = value.toString();
             emit dataChanged(index, index, QVector<int>(Qt::DisplayRole));
             return true;
-        case Qt::UserRole:
+        case Qt::EditRole:
             p.target = value.toUrl();
-            emit dataChanged(index, index, QVector<int>(Qt::UserRole));
+            emit dataChanged(index, index, QVector<int>(Qt::EditRole));
             return true;
         default:
             return false; // not a modifiable field
@@ -83,14 +83,14 @@ void PlacesItemModel::addPlace(int index, Place place) {
     if (insertRow(index)) {
         QModelIndex realIndex = this->index(index);
         setData(realIndex, place.label, Qt::DisplayRole);
-        setData(realIndex, place.target, Qt::UserRole);
+        setData(realIndex, place.target, Qt::EditRole);
     }
 }
 
 void PlacesItemModel::editPlace(int index, Place place) {
     QModelIndex realIndex = this->index(index);
     setData(realIndex, place.label, Qt::DisplayRole);
-    setData(realIndex, place.target, Qt::UserRole);
+    setData(realIndex, place.target, Qt::EditRole);
     places[index] = place;
 }
 
