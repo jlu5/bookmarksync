@@ -62,12 +62,8 @@ Qt::ItemFlags PlacesItemModel::flags(const QModelIndex &index) const {
 
 bool PlacesItemModel::insertRows(int row, int count, const QModelIndex &parent) {
     beginInsertRows(parent, row, row+count-1);
-    while (--count > 0) {
-        if (row >= rowCount()) {
-            places.append(Place{"", QUrl()});
-        } else {
-            places.insert(row, Place{"", QUrl()});
-        }
+    while (count-- > 0) {
+        places.insert(row, Place{"", QUrl()});
     }
     endInsertRows();
     return true;
@@ -75,7 +71,7 @@ bool PlacesItemModel::insertRows(int row, int count, const QModelIndex &parent) 
 
 bool PlacesItemModel::removeRows(int row, int count, const QModelIndex &parent) {
     beginRemoveRows(parent, row, row+count-1);
-    while (--count > 0) {
+    while (count-- > 0) {
         places.remove(row);
     }
     endRemoveRows();
@@ -88,7 +84,6 @@ void PlacesItemModel::addPlace(int index, Place place) {
         QModelIndex realIndex = this->index(index);
         setData(realIndex, place.label, Qt::DisplayRole);
         setData(realIndex, place.target, Qt::UserRole);
-        places.insert(index, place);
     }
 }
 
@@ -102,7 +97,6 @@ void PlacesItemModel::editPlace(int index, Place place) {
 // Removes a place from this backend
 void PlacesItemModel::removePlace(int index) {
     removeRow(index);
-    places.remove(index);
 }
 
 // Overwrite the existing model with the list of places
