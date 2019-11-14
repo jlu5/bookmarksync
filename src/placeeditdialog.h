@@ -5,6 +5,7 @@
 #include <QUrl>
 #include <QLineEdit>
 #include <QMessageBox>
+#include <QFileDialog>
 
 namespace Ui {
 class PlaceEditDialog;
@@ -26,7 +27,7 @@ private:
     QLineEdit* targetInput;
 
     void savePlaceInfo();
-
+    void onSelectButtonClicked();
     void done(int r) override;
 };
 

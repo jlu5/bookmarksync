@@ -16,6 +16,7 @@ PlaceEditDialog::PlaceEditDialog(QString& label, QUrl& target, QWidget *parent) 
     targetInput->setText(target.toString());
 
     QObject::connect(this, &QDialog::accepted, this, &PlaceEditDialog::savePlaceInfo);
+    QObject::connect(ui->selectButton, &QAbstractButton::clicked, this, &PlaceEditDialog::onSelectButtonClicked);
 }
 
 PlaceEditDialog::~PlaceEditDialog()
@@ -42,4 +43,13 @@ void PlaceEditDialog::done(int r)
         QDialog::done(r);
         return;
     }
+}
+
+
+void PlaceEditDialog::onSelectButtonClicked() {
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Select Directory"), "",
+                                                    QFileDialog::ShowDirsOnly
+                                                    | QFileDialog::DontResolveSymlinks);
+    targetInput->setText(dir);
+    savePlaceInfo();
 }
