@@ -43,6 +43,10 @@ bool PlacesItemModel::setData(const QModelIndex &index, const QVariant &value, i
             p.label = value.toString();
             emit dataChanged(index, index, QVector<int>(Qt::DisplayRole));
             return true;
+        case Qt::DecorationRole: {
+            // Stub decoration role changes so that drag and drop does not abort
+            return true;
+        }
         case Qt::EditRole:
             p.target = value.toUrl();
             emit dataChanged(index, index, QVector<int>(Qt::EditRole));
@@ -50,6 +54,11 @@ bool PlacesItemModel::setData(const QModelIndex &index, const QVariant &value, i
         default:
             return false; // not a modifiable field
     }
+}
+
+Qt::DropActions PlacesItemModel::supportedDropActions() const
+{
+    return Qt::MoveAction;
 }
 
 Qt::ItemFlags PlacesItemModel::flags(const QModelIndex &index) const {
