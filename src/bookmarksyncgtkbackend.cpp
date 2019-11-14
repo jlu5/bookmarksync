@@ -60,6 +60,7 @@ void BookmarkSyncGTKBackend::loadPlaces() {
 }
 
 void BookmarkSyncGTKBackend::writePlaces() {
+    monitor->removePath(target); // So that we don't get triggered by our own writes
     QFile file(target);
     if (file.open(QFile::WriteOnly | QFile::Truncate)) {
         QTextStream out(&file);
@@ -67,7 +68,7 @@ void BookmarkSyncGTKBackend::writePlaces() {
             out << place.target.toEncoded() << " " << place.label << '\n';
         }
     }
-    // don't need to explicitly refresh here, our file monitor should catch it
+    monitor->addPath(target);
 }
 
 // Returns a place instance given the model index
@@ -93,7 +94,7 @@ void BookmarkSyncGTKBackend::editPlace(int index, Place place) {
 // Removes a place from this backend
 void BookmarkSyncGTKBackend::removePlace(int index) {
     model->removePlace(index);
-    writePlaces();
+    // writePlaces() will be called by onRowsRemoved handler
 }
 
 QVector<Place> BookmarkSyncGTKBackend::getPlaces() const {
