@@ -82,22 +82,6 @@ bool PlacesItemModel::removeRows(int row, int count, const QModelIndex &parent) 
     return true;
 }
 
-bool PlacesItemModel::moveRows(const QModelIndex &sourceParent, int sourceRow, int count, const QModelIndex &destinationParent, int destinationChild) {
-
-    if (count > 1) {
-        qWarning() << "Moving multiple items in PlacesItemModel is not supported yet";
-        return false;
-    }
-    if (sourceParent != destinationParent) {
-        qWarning() << "PlacesItemModel: Only internal move is supported";
-        return false; // Only internal move is supported
-    }
-    beginMoveRows(sourceParent, sourceRow, sourceRow, destinationParent, destinationChild);
-    places.move(sourceRow, destinationChild);
-    endMoveRows();
-    return true;
-}
-
 // Adds a place to this backend
 void PlacesItemModel::addPlace(int index, Place place) {
     if (insertRow(index)) {
