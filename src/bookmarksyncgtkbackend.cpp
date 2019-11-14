@@ -25,12 +25,23 @@ BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, Backend
     QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onEditButtonClicked);
     QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onRemoveButtonClicked);
     QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onSyncButtonClicked);
+    QObject::connect(model, &PlacesItemModel::rowsRemoved, this, &BookmarkSyncGTKBackend::onRowsRemoved);
 }
 
 void BookmarkSyncGTKBackend::onFileChanged(const QString &) {
     qDebug() << "Got file changed!" << monitor->files();
     monitor->addPath(target); // Why is this needed?
     loadPlaces();
+}
+
+/* Remove handler: write the places after doing an internal move via drag and drop
+ * An internal move consists of insertRow, setData (data copy), and then removeRow in that order.
+ * For some reason custom signals sent from dropEvent() trigger before the remove, causing the outputted places list
+ * to be incorrect. Meanwhile, QListView::indexesMoved does not seem to trigger from an internal move, and
+ * moveRows is not used here per https://forum.qt.io/topic/90560/qtreeview-qabstractitemmodel-and-internal-move
+ */
+void BookmarkSyncGTKBackend::onRowsRemoved(const QModelIndex&, int, int) {
+    writePlaces();
 }
 
 void BookmarkSyncGTKBackend::loadPlaces() {

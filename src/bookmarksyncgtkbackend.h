@@ -30,6 +30,7 @@ private:
     void writePlaces();
 
     void onFileChanged(const QString &path);
+    void onRowsRemoved(const QModelIndex &parent, int first, int last);
 };
 
 #endif // BOOKMARKSYNCGTKBACKEND_H
