@@ -93,6 +93,7 @@ Place BookmarkSyncGTKBackend::getPlaceAtIndex(const QModelIndex& index) const {
 void BookmarkSyncGTKBackend::addPlace(Place place) {
     addPlace(model->rowCount(), place);
 }
+// Adds a place to this backend after the given index
 void BookmarkSyncGTKBackend::addPlace(int index, Place place) {
     model->addPlace(index, place);
     writePlaces();

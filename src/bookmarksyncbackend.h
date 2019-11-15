@@ -23,8 +23,9 @@ public:
     // Returns a list of places currently defined in this backend
     virtual QVector<Place> getPlaces() const = 0;
 
-    // Adds a place to this backend
+    // Adds a place to this backend as the last entry
     virtual void addPlace(Place place) = 0;
+    // Adds a place to this backend after the given index
     virtual void addPlace(int index, Place place) = 0;
 
     // Updates the place at "index" to newData

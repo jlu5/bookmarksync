@@ -23,7 +23,8 @@ void BookmarkSyncBackend::onAddButtonClicked() {
     PlaceEditDialog dialog(label, url);
     if (dialog.exec()) {
         qDebug() << "Made new place" << label << "," << url;
-        addPlace(Place{label, url});
+        QModelIndex current = listView->currentIndex();
+        addPlace(current.row(), Place{label, url});
     }
 }
 

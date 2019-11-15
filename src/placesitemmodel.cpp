@@ -89,8 +89,9 @@ bool PlacesItemModel::removeRows(int row, int count, const QModelIndex &parent) 
     return true;
 }
 
-// Adds a place to this backend
+// Adds a place to this backend after the given index
 void PlacesItemModel::addPlace(int index, Place place) {
+    index++;
     if (insertRow(index)) {
         QModelIndex realIndex = this->index(index);
         setData(realIndex, place.label, Qt::DisplayRole);

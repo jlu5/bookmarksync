@@ -81,7 +81,8 @@ void BookmarkSyncKDEBackend::onAddButtonClicked() {
     bool result = KFilePlaceEditDialog::getInformation(false, url, label, iconName, true, appLocal, 32, parent);
     if (result) {
         qDebug() << "Made new place" << label << "," << url;
-        model->addPlace(label, url, iconName, "BookmarkSync", current);
+        QModelIndex realCurrentIndex = filteredModel->mapToSource(current);
+        model->addPlace(label, url, iconName, "BookmarkSync", realCurrentIndex);
     }
 }
 
