@@ -50,6 +50,8 @@ void PlaceEditDialog::onSelectButtonClicked() {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Select Directory"), "",
                                                     QFileDialog::ShowDirsOnly
                                                     | QFileDialog::DontResolveSymlinks);
-    targetInput->setText(dir);
-    savePlaceInfo();
+    if (!dir.isEmpty()) {
+        targetInput->setText(dir);
+        savePlaceInfo();
+    }
 }
