@@ -13,7 +13,13 @@ PlaceEditDialog::PlaceEditDialog(QString& label, QUrl& target, QWidget *parent) 
 
     // Preload our input fields with the given variables
     nameInput->setText(label);
-    targetInput->setText(target.toString());
+
+    // Decode file:/// URIs
+    if (target.isLocalFile() && target.host().isEmpty()) {
+        targetInput->setText(target.toLocalFile());
+    } else {
+        targetInput->setText(target.toString());
+    }
 
     QObject::connect(this, &QDialog::accepted, this, &PlaceEditDialog::savePlaceInfo);
     QObject::connect(ui->selectButton, &QAbstractButton::clicked, this, &PlaceEditDialog::onSelectButtonClicked);
