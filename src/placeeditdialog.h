@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QDebug>
 
 namespace Ui {
 class PlaceEditDialog;
