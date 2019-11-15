@@ -1,3 +1,5 @@
+// PlaceEditDialog: Implements the Configure Place dialog for adding/editing GTK+ bookmarks
+
 #include "placeeditdialog.h"
 #include "ui_placeeditdialog.h"
 

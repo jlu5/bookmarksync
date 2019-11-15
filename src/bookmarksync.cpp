@@ -1,3 +1,5 @@
+// BookmarkSync: main program UI & sync logic
+
 #include "bookmarksync.h"
 #include "bookmarksynckdebackend.h"
 #include "bookmarksyncgtkbackend.h"

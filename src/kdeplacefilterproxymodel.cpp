@@ -1,3 +1,5 @@
+// KDEPlaceFilterProxyModel: KIO Places filter proxy to only show local directories and remote locations
+
 #include "kdeplacefilterproxymodel.h"
 
 KDEPlaceFilterProxyModel::KDEPlaceFilterProxyModel(KFilePlacesModel* sourceModel, QObject *parent)

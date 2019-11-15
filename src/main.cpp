@@ -1,3 +1,5 @@
+// main.cpp: program launcher
+
 #include "bookmarksync.h"
 #include <QApplication>
 #include <QCommandLineParser>

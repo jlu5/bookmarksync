@@ -1,3 +1,5 @@
+// BackendWidget: widget for each bookmarks pane in the main window
+
 #include "backendwidget.h"
 #include "ui_backendwidget.h"
 

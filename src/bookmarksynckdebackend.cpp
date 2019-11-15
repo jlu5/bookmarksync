@@ -1,4 +1,6 @@
-﻿#include "bookmarksync.h"
+﻿// BookmarkSyncKDEBackend: KDE bookmarks backend (via KFilePlacesModel)
+
+#include "bookmarksync.h"
 #include "bookmarksynckdebackend.h"
 #include "place.h"
 

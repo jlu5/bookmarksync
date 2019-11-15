@@ -1,3 +1,5 @@
+// PlacesItemModel: Qt item model that holds an array of Places
+
 #include "placesitemmodel.h"
 #include "kio/global.h"
 

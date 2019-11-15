@@ -1,3 +1,5 @@
+// Place: holds data for a bookmarks entry
+
 #ifndef PLACE_H
 #define PLACE_H
 

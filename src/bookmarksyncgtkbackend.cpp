@@ -1,3 +1,5 @@
+// BookmarkSyncGTKBackend: GTK+ bookmarks backend (via raw file access)
+
 #include "bookmarksyncbackend.h"
 #include "bookmarksyncgtkbackend.h"
 

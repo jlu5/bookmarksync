@@ -1,3 +1,5 @@
+// KDEPlaceFilterProxyModel: KIO Places filter proxy to only show local directories and remote locations
+
 #ifndef NONSYSTEMPLACEFILTERPROXYMODEL_H
 #define NONSYSTEMPLACEFILTERPROXYMODEL_H
 

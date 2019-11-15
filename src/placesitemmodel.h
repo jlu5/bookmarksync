@@ -1,3 +1,5 @@
+// PlacesItemModel: Qt item model that holds an array of Places
+
 #ifndef PLACESITEMMODEL_H
 #define PLACESITEMMODEL_H
 

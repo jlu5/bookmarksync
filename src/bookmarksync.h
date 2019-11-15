@@ -1,3 +1,5 @@
+// BookmarkSync: main program UI & sync logic
+
 #ifndef BOOKMARKSYNCMAINWINDOW_H
 #define BOOKMARKSYNCMAINWINDOW_H
 

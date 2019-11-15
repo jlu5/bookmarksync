@@ -1,3 +1,5 @@
+// BookmarkSyncBackend: base class for bookmarks backends
+
 #ifndef BOOKMARKSYNCBACKEND_H
 #define BOOKMARKSYNCBACKEND_H
 

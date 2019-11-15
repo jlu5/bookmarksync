@@ -1,3 +1,5 @@
+// BackendWidget: widget for each bookmarks pane in the main window
+
 #ifndef BACKENDWIDGET_H
 #define BACKENDWIDGET_H
 

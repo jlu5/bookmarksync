@@ -1,3 +1,5 @@
+// PlaceEditDialog: Implements the Configure Place dialog for adding/editing GTK+ bookmarks
+
 #ifndef PLACEEDITDIALOG_H
 #define PLACEEDITDIALOG_H
 

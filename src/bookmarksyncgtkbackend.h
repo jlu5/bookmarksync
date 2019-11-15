@@ -1,3 +1,5 @@
+// BookmarkSyncGTKBackend: GTK+ bookmarks backend (via raw file access)
+
 #ifndef BOOKMARKSYNCGTKBACKEND_H
 #define BOOKMARKSYNCGTKBACKEND_H
 

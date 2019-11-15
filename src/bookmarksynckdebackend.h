@@ -1,3 +1,5 @@
+// BookmarkSyncKDEBackend: KDE bookmarks backend (via KFilePlacesModel)
+
 #ifndef BOOKMARKSYNCKDEBACKEND_H
 #define BOOKMARKSYNCKDEBACKEND_H
 
