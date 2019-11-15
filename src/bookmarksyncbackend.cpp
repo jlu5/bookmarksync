@@ -53,3 +53,8 @@ void BookmarkSyncBackend::onRemoveButtonClicked() {
 void BookmarkSyncBackend::onSyncButtonClicked() {
     parent->syncFrom(this);
 }
+
+// DOUBLE CLICK HANDLER: edit the selected place
+void BookmarkSyncBackend::onDoubleClicked(const QModelIndex&) {
+    this->onEditButtonClicked();
+}

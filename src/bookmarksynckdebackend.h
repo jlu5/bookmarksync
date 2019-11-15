@@ -23,9 +23,9 @@ public:
     void removePlace(int index);
     void replace(const QVector<Place>& places);
 
-    // Overridden
-    void onAddButtonClicked();
-    void onEditButtonClicked();
+    // Reimplemented from BookmarkSyncBackend to use native KFilePlaceEditDialog
+    void onAddButtonClicked() override;
+    void onEditButtonClicked() override;
 
 protected:
     Place getPlaceAtIndex(const QModelIndex& index) const;

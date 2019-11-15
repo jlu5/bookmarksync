@@ -45,16 +45,19 @@ protected:
     virtual Place getPlaceAtIndex(const QModelIndex& index) const = 0;
 
     // BUTTON HANDLER: Add a new place to the list
-    void onAddButtonClicked();
+    virtual void onAddButtonClicked();
 
     // BUTTON HANDLER: Edit the currently selected place
-    void onEditButtonClicked();
+    virtual void onEditButtonClicked();
 
     // BUTTON HANDLER: Remove the currently selected place
-    void onRemoveButtonClicked();
+    virtual void onRemoveButtonClicked();
 
     // BUTTON HANDLER: Begin sync from this backend
-    void onSyncButtonClicked();
+    virtual void onSyncButtonClicked();
+
+    // LISTVIEW DOUBLE CLICK HANDLER: edit the selected place. By default this will just call onEditButtonClicked()
+    virtual void onDoubleClicked(const QModelIndex& index);
 };
 
 #endif // BOOKMARKSYNCBACKEND_H

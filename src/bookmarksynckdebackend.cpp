@@ -16,6 +16,7 @@ BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, Backend
     QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncKDEBackend::onEditButtonClicked);
     QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncKDEBackend::onRemoveButtonClicked);
     QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncKDEBackend::onSyncButtonClicked);
+    QObject::connect(widget->listView, &QListView::doubleClicked, this, &BookmarkSyncKDEBackend::onDoubleClicked);
 }
 
 

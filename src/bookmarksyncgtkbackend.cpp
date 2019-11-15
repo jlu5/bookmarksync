@@ -27,6 +27,7 @@ BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, Backend
     QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onEditButtonClicked);
     QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onRemoveButtonClicked);
     QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onSyncButtonClicked);
+    QObject::connect(widget->listView, &QListView::doubleClicked, this, &BookmarkSyncGTKBackend::onDoubleClicked);
     QObject::connect(model, &PlacesItemModel::rowsRemoved, this, &BookmarkSyncGTKBackend::onRowsRemoved);
 }
 
