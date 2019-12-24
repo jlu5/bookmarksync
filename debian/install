@@ -1,0 +1,2 @@
+#builddir/src/bookmarksync usr/bin
+bookmarksync.desktop usr/share/applications
