@@ -4,8 +4,8 @@
 #include "bookmarksynckdebackend.h"
 #include "place.h"
 
-BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* widget) :
-    BookmarkSyncBackend(syncParent, widget)
+BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* parentWidget) :
+    BookmarkSyncBackend(syncParent, parentWidget)
 {
 
     model = new KFilePlacesModel(widget);

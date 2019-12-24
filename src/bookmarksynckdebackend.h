@@ -16,19 +16,19 @@ public:
     BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* widget);
 
     // Implemented functions
-    QVector<Place> getPlaces() const;
-    void addPlace(Place place);
-    void addPlace(int index, Place place);
-    void editPlace(int index, Place newData);
-    void removePlace(int index);
-    void replace(const QVector<Place>& places);
+    QVector<Place> getPlaces() const override;
+    void addPlace(Place place) override;
+    void addPlace(int index, Place place) override;
+    void editPlace(int index, Place newData) override;
+    void removePlace(int index) override;
+    void replace(const QVector<Place>& places) override;
 
     // Reimplemented from BookmarkSyncBackend to use native KFilePlaceEditDialog
     void onAddButtonClicked() override;
     void onEditButtonClicked() override;
 
 protected:
-    Place getPlaceAtIndex(const QModelIndex& index) const;
+    Place getPlaceAtIndex(const QModelIndex& index) const override;
 
 private:    
     KFilePlacesModel* model;
