@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=BookmarkSync
+Comment=Manage KDE and GTK+ folder bookmarks
+Categories=Utility;Qt;KDE;
+Icon=application-executable
+Exec=bookmarksync
+Terminal=false
+Type=Application
+StartupNotify=false
+Keywords=Bookmark;Sync;Manage;Bookmarks;Favorites;Favourites;
