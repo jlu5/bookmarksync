@@ -40,6 +40,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QToolButton" name="addButton">
+       <property name="toolTip">
+        <string>Add a new Place</string>
+       </property>
        <property name="text">
         <string>Add</string>
        </property>
@@ -51,6 +54,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="editButton">
+       <property name="toolTip">
+        <string>Edit currently selected Place</string>
+       </property>
        <property name="text">
         <string> Edit Selected</string>
        </property>
@@ -62,6 +68,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="removeButton">
+       <property name="toolTip">
+        <string>Remove currently selected Place</string>
+       </property>
        <property name="text">
         <string>Remove Selected</string>
        </property>
@@ -73,6 +82,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="syncButton">
+       <property name="toolTip">
+        <string>Copy to other side</string>
+       </property>
        <property name="text">
         <string>Sync from this backend</string>
        </property>
