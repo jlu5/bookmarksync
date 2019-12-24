@@ -35,5 +35,7 @@ void BookmarkSync::syncFrom(BookmarkSyncBackend* sourceBackend) {
 }
 
 void BookmarkSync::about() {
-    QMessageBox::about(this, tr("BookmarkSync"), tr("BookmarkSync is a simple utility that manages KDE and GTK+ bookmarks."));
+    QString aboutText = tr("BookmarkSync is a simple utility that manages KDE and GTK+ bookmarks.\n"
+                           "This is BookmarkSync v%1.").arg(QCoreApplication::applicationVersion());
+    QMessageBox::about(this, tr("BookmarkSync"), aboutText);
 }
