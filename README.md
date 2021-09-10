@@ -23,3 +23,8 @@ The resulting binary will be named `bookmarksync`.
 
 
 Alternatively, you can build the project (`bookmarksync.pro`) using Qt Creator.
+
+
+## Under the hood
+
+GTK+ stores bookmarks in `~/.config/gtk-3.0/bookmarks`, and KDE in `~/.local/share/user-places.xbel`. BookmarkSync manipulates the former as plaintext (as it's a fairly simple format), and the latter using the [KFilePlacesModel](https://api.kde.org/frameworks/kio/html/classKFilePlacesModel.html) API from KIO.
