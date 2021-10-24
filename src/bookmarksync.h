@@ -35,6 +35,7 @@ private:
 
     BackendWidget* kdeBackendWidget;
     BackendWidget* gtkBackendWidget;
+    BackendWidget* qtBackendWidget;
     QVector<BookmarkSyncBackend*> backends;
 };
 
