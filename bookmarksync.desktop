@@ -2,7 +2,7 @@
 Name=BookmarkSync
 Comment=Manage KDE and GTK+ folder bookmarks
 Categories=Utility;Qt;KDE;
-Icon=application-executable
+Icon=application-x-executable
 Exec=bookmarksync
 Terminal=false
 Type=Application
