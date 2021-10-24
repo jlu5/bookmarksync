@@ -26,7 +26,6 @@ private:
     void loadPlaces();
     void writePlaces();
     PlacesItemModel* model;
-    QFileDialog* dialog;
 };
 
 #endif // BOOKMARKSYNCQTBACKEND_H
