@@ -1,5 +1,6 @@
 # BookmarkSync
 
+[![Version](https://img.shields.io/github/v/tag/jlu5/bookmarksync?sort=date&label=Version)](https://github.com/jlu5/bookmarksync/tags)
 
 BookmarkSync is a simple program that manages GTK+ and KDE file manager bookmarks.
 
