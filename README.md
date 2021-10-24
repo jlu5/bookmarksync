@@ -4,6 +4,13 @@ BookmarkSync is a simple program that manages GTK+ and KDE bookmarks.
 
 ![Demo screenshot](bookmarksync.png "BookmarkSync main window")
 
+## Distribution packages
+
+You can find bookmarksync in:
+
+- Arch Linux AUR: [bookmarksync-git](https://aur.archlinux.org/packages/bookmarksync-git/)
+- Debian via [Utopia Repository](https://deb.utopia-repository.org/): bookmarksync
+
 ## Build instructions
 
 To compile BookmarkSync you will need qmake and the headers for KIO.
