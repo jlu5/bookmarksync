@@ -40,6 +40,7 @@ void BookmarkSyncQtBackend::writePlaces() {
         urls.append(place.target);
     }
     dialog->setSidebarUrls(urls);
+    loadPlaces(); // refresh our local view, in case there is any mismatch
 }
 
 Place BookmarkSyncQtBackend::getPlaceAtIndex(const QModelIndex& index) const {
