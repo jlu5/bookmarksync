@@ -2,7 +2,7 @@
 
 [![latest release](https://img.shields.io/github/v/tag/jlu5/bookmarksync?sort=date)](https://github.com/jlu5/bookmarksync/tags)
 
-**BookmarkSync** is a simple program that manages bookmarks (pinned folders) in the GTK+, KDE, and Qt (native) file pickers. I built this tool because I was using GTK+ apps (GIMP, Audacity, etc.) on KDE and constantly got frustrated by the bookmarks lists not matching up.
+**BookmarkSync** is a simple program that manages the bookmarks (pinned folders) in GTK+, KDE, and Qt 5's native file pickers. I built this tool because I was using GTK+ apps (GIMP, Audacity, etc.) on KDE and constantly got frustrated by the bookmarks lists not matching up.
 
 ![Demo screenshot](bookmarksync.png "BookmarkSync main window")
 
