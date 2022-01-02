@@ -35,7 +35,8 @@ SOURCES += \
     placeeditdialog.cpp \
     bookmarksyncgtkbackend.cpp \
     placesitemmodel.cpp \
-    placesitemmodeltest.cpp
+    placesitemmodeltest.cpp \
+    bookmarksyncqtbackend.cpp
 
 HEADERS += \
     kdeplacefilterproxymodel.h \
@@ -47,7 +48,8 @@ HEADERS += \
     placeeditdialog.h \
     bookmarksyncgtkbackend.h \
     placesitemmodel.h \
-    placesitemmodeltest.h
+    placesitemmodeltest.h \
+    bookmarksyncqtbackend.h
 
 FORMS += \
     bookmarksync.ui \

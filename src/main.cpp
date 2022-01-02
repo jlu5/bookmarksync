@@ -8,7 +8,7 @@
 
 // Tentative icon... we should really find our own
 static QString ICON_NAME = "view-list";
-static QString VERSION = "0.1.1";
+static QString VERSION = "0.2.0";
 
 int main(int argc, char *argv[])
 {

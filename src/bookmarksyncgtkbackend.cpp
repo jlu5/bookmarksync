@@ -63,6 +63,8 @@ void BookmarkSyncGTKBackend::loadPlaces() {
             if (label.isEmpty()) {
                 // Label can be empty, in which case we use the target folder name
                 label = target.section("/", -1);
+                // Unescape any URL-encoded characters such as spaces
+                label = QUrl::fromPercentEncoding(label.toUtf8());
             }
             //qDebug() << "Read place with target" << target << ", label" << label;
             places.append(Place{label, target});

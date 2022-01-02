@@ -15,23 +15,23 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="BackendWidget" name="gtkBackendWidget" native="true"/>
-    </item>
     <item row="1" column="1">
      <widget class="BackendWidget" name="kdeBackendWidget" native="true"/>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="gtkLabel">
-      <property name="text">
-       <string>GTK+</string>
-      </property>
-     </widget>
+    <item row="1" column="0">
+     <widget class="BackendWidget" name="gtkBackendWidget" native="true"/>
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="kdeLabel">
       <property name="text">
        <string>KDE</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="gtkLabel">
+      <property name="text">
+       <string>GTK+</string>
       </property>
      </widget>
     </item>
@@ -44,10 +44,20 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string>Note: Syncing from GTK+ to KDE will remove all custom icons!</string>
+       <string>Note: Syncing to KDE will remove all custom icons!</string>
       </property>
       <property name="textInteractionFlags">
        <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="BackendWidget" name="qtBackendWidget" native="true"/>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="qtLabel">
+      <property name="text">
+       <string>Qt (local paths ONLY)</string>
       </property>
      </widget>
     </item>
@@ -59,7 +69,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>32</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
