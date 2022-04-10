@@ -1,3 +1,9 @@
+bookmarksync (0.2.0-0utopia1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- James Lu <james@overdrivenetworks.com>  Sun, 10 Apr 2022 13:16:50 -0700
+
 bookmarksync (0.1.1-0utopia1) unstable; urgency=medium
 
   * Initial release.
