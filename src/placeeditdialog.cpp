@@ -35,16 +35,11 @@ PlaceEditDialog::~PlaceEditDialog()
 void PlaceEditDialog::savePlaceInfo() {
     // Save place info into the target vars we were given
     target = QUrl::fromUserInput(targetInput->text());
-
-    // Set the name field to the directory name if currently empty
-    if (label.isEmpty()) {
-        nameInput->setText(target.fileName());
-    }
     label = nameInput->text();
 }
 
 
-// Verify that the inputed label and target are valid
+// Verify that the inputted label and target are valid
 void PlaceEditDialog::done(int r)
 {
     if (r == QDialog::Accepted &&
