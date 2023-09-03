@@ -23,8 +23,8 @@ public:
     explicit BookmarkSync(QWidget* parent = nullptr);
     ~BookmarkSync();
 
-    // Synchronization functions
-    //bool isSyncReady();
+    BookmarkSyncBackend* getBackend(QString name) const;
+
     void syncFrom(BookmarkSyncBackend* backend);
 
 protected:
@@ -36,7 +36,7 @@ private:
     BackendWidget* kdeBackendWidget;
     BackendWidget* gtkBackendWidget;
     BackendWidget* qtBackendWidget;
-    QVector<BookmarkSyncBackend*> backends;
+    QMap<QString, BookmarkSyncBackend*> backends;
 };
 
 #endif // BOOKMARKSYNCMAINWINDOW_H

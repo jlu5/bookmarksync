@@ -8,6 +8,12 @@
 
 Some alternatives include [xdg-desktop-portal](https://github.com/flatpak/xdg-desktop-portal) to unify dialogs, but its focus is sandboxed apps, and programs outside those don't always support portals in practice. On GTK+ based DEs like XFCE and Cinnamon, an easier option may be to use GTK+ dialogs directly in Qt through `QT_QPA_PLATFORMTHEME=gtk2` or [qt5ct](https://sourceforge.net/projects/qt5ct/) (set standard dialogs -> GTK2).
 
+## CLI mode
+
+As of v0.3.0 there is support for running sync from the command line: `$ bookmarksync --sync-from {gtk,kde,qt}`.
+
+Note that this is not truly headless, as BookmarkSync still expects a display to exist. If your environment doesn't have one available, you can switch to a dummy display with some QT overrides: `$ QT_QPA_PLATFORMTHEME= QT_QPA_PLATFORM=offscreen ./bookmarksync <args>`
+
 ## Distribution packages
 
 You can find bookmarksync in:
