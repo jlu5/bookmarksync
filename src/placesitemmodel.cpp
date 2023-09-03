@@ -115,7 +115,7 @@ void PlacesItemModel::replace(const QVector<Place>& newPlaces) {
     endResetModel();
 }
 
-Place PlacesItemModel::getPlace(const QModelIndex& index) {
+Place PlacesItemModel::getPlace(const QModelIndex& index) const {
     return places[index.row()];
 }
 
