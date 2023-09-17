@@ -2,4 +2,6 @@
     "clangd.arguments": [
         "--compile-commands-dir=src"
     ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
 }

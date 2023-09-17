@@ -52,3 +52,7 @@ compile_commands.json
 
 # Generated binaries
 bookmarksync
+
+# Python
+__pycache__/
+*.py[cod]
