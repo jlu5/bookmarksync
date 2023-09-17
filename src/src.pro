@@ -35,7 +35,6 @@ SOURCES += \
     placeeditdialog.cpp \
     bookmarksyncgtkbackend.cpp \
     placesitemmodel.cpp \
-    placesitemmodeltest.cpp \
     bookmarksyncqtbackend.cpp
 
 HEADERS += \
@@ -48,7 +47,6 @@ HEADERS += \
     placeeditdialog.h \
     bookmarksyncgtkbackend.h \
     placesitemmodel.h \
-    placesitemmodeltest.h \
     bookmarksyncqtbackend.h
 
 FORMS += \
