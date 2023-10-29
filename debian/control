@@ -2,10 +2,10 @@ Source: bookmarksync
 Section: utils
 Priority: optional
 Maintainer: James Lu <james@overdrivenetworks.com>
-Build-Depends: debhelper-compat (= 12),
+Build-Depends: debhelper-compat (= 13),
                libkf5kio-dev,
                qtbase5-dev,
-Standards-Version: 4.4.1
+Standards-Version: 4.6.2
 Homepage: https://github.com/jlu5/bookmarksync
 Vcs-Git: https://github.com/jlu5/bookmarksync
 Vcs-Browser: https://github.com/jlu5/bookmarksync/tree/debian

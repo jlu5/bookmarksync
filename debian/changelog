@@ -1,3 +1,10 @@
+bookmarksync (0.3.0-0utopia1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump to debhelper 13 and Standards-Version 4.6.2
+
+ -- James Lu <jlu@debian.org>  Sat, 28 Oct 2023 18:13:44 -0700
+
 bookmarksync (0.2.0-0utopia1) unstable; urgency=medium
 
   * New upstream release.
