@@ -73,18 +73,14 @@ Qt::ItemFlags PlacesItemModel::flags(const QModelIndex &index) const {
 
 bool PlacesItemModel::insertRows(int row, int count, const QModelIndex &parent) {
     beginInsertRows(parent, row, row+count-1);
-    while (count-- > 0) {
-        places.insert(row, Place{"", QUrl()});
-    }
+    places.insert(row, count, Place{"", QUrl()});
     endInsertRows();
     return true;
 }
 
 bool PlacesItemModel::removeRows(int row, int count, const QModelIndex &parent) {
     beginRemoveRows(parent, row, row+count-1);
-    while (count-- > 0) {
-        places.remove(row);
-    }
+    places.remove(row, count);
     endRemoveRows();
     return true;
 }
@@ -119,7 +115,7 @@ void PlacesItemModel::replace(const QVector<Place>& newPlaces) {
     endResetModel();
 }
 
-Place PlacesItemModel::getPlace(const QModelIndex& index) {
+Place PlacesItemModel::getPlace(const QModelIndex& index) const {
     return places[index.row()];
 }
 

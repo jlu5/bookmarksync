@@ -14,8 +14,10 @@ BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, Backend
     listView->setModel(model);
     // Try to load ~/.config/gtk-3.0/bookmarks
     QDir targetFolder = QDir(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
+    if (targetFolder.mkdir("gtk-3.0")) {
+        qDebug() << "Created .config/gtk-3.0 under" << targetFolder;
+    };
     target = targetFolder.filePath("gtk-3.0/bookmarks");
-    qDebug() << "targetFolder" << targetFolder << "target" << target;
     // TODO: make sure target is actually readable
     monitor = new QFileSystemWatcher();
     monitor->addPath(target);

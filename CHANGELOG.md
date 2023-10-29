@@ -1,5 +1,11 @@
 # BookmarkSync Changelog
 
+## 0.3.0 (2023-10-18)
+
+- Add `--sync-from/-f` CLI flag to run sync without GUI
+- Fix editing place labels if the label was empty (GTK, Qt backends)
+- gtkbackend: create `~/.config/gtk-3.0` if it doesn't exist
+
 ## 0.2.0 (2022-01-02)
 
 - Add support for Qt 5 native file pickers
