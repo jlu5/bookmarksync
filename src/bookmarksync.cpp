@@ -6,6 +6,10 @@
 #include "bookmarksyncqtbackend.h"
 #include "ui_bookmarksync.h"
 
+#include <QDebug>
+#include <QListView>
+#include <QMessageBox>
+
 BookmarkSync::BookmarkSync(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BookmarkSyncMainWindow)

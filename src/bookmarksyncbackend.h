@@ -5,11 +5,6 @@
 
 #include "place.h"
 #include "backendwidget.h"
-#include "placeeditdialog.h"
-
-#include <QStringList>
-#include <QListView>
-#include <QAction>
 
 class BookmarkSync; // forward declaration
 

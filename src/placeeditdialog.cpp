@@ -3,6 +3,10 @@
 #include "placeeditdialog.h"
 #include "ui_placeeditdialog.h"
 
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QDebug>
+
 PlaceEditDialog::PlaceEditDialog(QString& label, QUrl& target, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PlaceEditDialog),

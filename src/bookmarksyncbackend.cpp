@@ -2,6 +2,11 @@
 
 #include "bookmarksyncbackend.h"
 #include "bookmarksync.h"
+#include "placeeditdialog.h"
+
+#include <QStringList>
+#include <QListView>
+#include <QAction>
 
 BookmarkSyncBackend::BookmarkSyncBackend(BookmarkSync* parent, BackendWidget* widget) :
     parent(parent), widget(widget)
