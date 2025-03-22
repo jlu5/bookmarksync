@@ -56,7 +56,7 @@ void BookmarkSyncGTKBackend::loadPlaces() {
     if (file.open(QIODevice::ReadOnly)) {
         QTextStream in(&file);
         // We use UTF8 on linux, right?
-        in.setCodec("UTF-8");
+        in.setEncoding(QStringConverter::Utf8);
 
         while(!in.atEnd()) {
             QString decoded = in.readLine();
