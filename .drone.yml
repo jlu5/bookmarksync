@@ -9,4 +9,4 @@ steps:
     - apt-get update
     - apt-get install -yy --no-install-recommends g++ cmake make qt6-base-dev libkf6iconthemes-dev libkf6kio-dev python3
     - cd src/ && cmake . && make
-    - python3 -m unittest discover test/ -v
+    - cd .. && python3 -m unittest discover test/ -v
