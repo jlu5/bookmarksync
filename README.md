@@ -6,7 +6,11 @@
 
 ![Demo screenshot](bookmarksync.png "BookmarkSync main window")
 
-Note: BookmarkSync is one solution to this problem, though there are other alternatives too that may work depending on the program, such as [xdg-desktop-portal](https://github.com/flatpak/xdg-desktop-portal) or setting `QT_QPA_PLATFORMTHEME=gtk2` on GTK+ based desktop environments.
+## Do I need this?
+
+On GTK+ based desktop environments like GNOME or Xfce, you can make Qt use the GTK+ file picker by setting `QT_QPA_PLATFORMTHEME=gtk3` or `QT_QPA_PLATFORMTHEME=gtk2`. This is usually the easiest option on those environments.
+
+Alternatively: Chrome, Firefox ([with `about:config` override](https://wiki.archlinux.org/title/Firefox#XDG_Desktop_Portal_integration)), and most sandboxed apps support [XDG Desktop Portal](https://wiki.archlinux.org/title/XDG_Desktop_Portal) which will automatically load the desktop environment's native file picker.
 
 ## CLI mode
 
@@ -23,6 +27,8 @@ You can find bookmarksync in:
 
 ## Build instructions
 
+**Note that BookmarkSync compiles with Qt 6 and KF6 now. If you need the Qt 5 version, use the `qt5` / 0.3.x branch instead.**
+
 To compile BookmarkSync, you will need:
 
 - cmake
@@ -32,7 +38,7 @@ To compile BookmarkSync, you will need:
 
 On Debian and derivatives, this is `apt install cmake qt6-base-dev libkf6iconthemes-dev libkf6kio-dev`.
 
-Then clone the repository and compile it,
+Then clone the repository and compile it:
 
 ```shell
 git clone https://github.com/jlu5/bookmarksync
@@ -53,4 +59,4 @@ The resulting binary will be named `bookmarksync`.
 
 - Only KDE supports custom icons for places; syncing from others will erase all custom icons.
 - Only GTK+ and KDE support remote locations like `sftp://` or `smb://` in bookmarks: syncing *from* Qt will remove all remote places from the list.
-- Editing bookmarks from another program while BookmarkSync is running may cause things to go out of sync. This mainly affects the Qt backend, as the KDE and GTK+ backends tend to sync faster.
+- Editing bookmarks from another program while BookmarkSync is running may cause things to go out of sync. This mainly affects the Qt backend, as the KDE and GTK+ backends tend to refresh faster.
