@@ -2,7 +2,7 @@
 
 [![latest release](https://img.shields.io/github/v/tag/jlu5/bookmarksync?sort=date)](https://github.com/jlu5/bookmarksync/tags)
 
-**BookmarkSync** is a simple program that manages the bookmarks (pinned folders) in GTK+, KDE, and Qt 5's native file pickers. I built this tool because I was using GTK+ apps (GIMP, Audacity, etc.) on KDE and constantly got frustrated by the bookmarks lists not matching up.
+**BookmarkSync** is a simple program that manages the bookmarks (pinned folders) in GTK+, KDE, and Qt's native file pickers. I built this tool because I was using GTK+ apps (GIMP, Audacity, etc.) on KDE and constantly got frustrated by the bookmarks lists not matching up.
 
 ![Demo screenshot](bookmarksync.png "BookmarkSync main window")
 
@@ -23,24 +23,25 @@ You can find bookmarksync in:
 
 ## Build instructions
 
-To compile BookmarkSync you will need qmake and the headers for KIO.
+To compile BookmarkSync, you will need:
 
-On Debian and derivatives, this is `apt install qtbase5-dev libkf5kio-dev`.
+- cmake
+- Qt 6
+- KF6KIO headers
+- KF6IconThemes headers
 
-Then,
+On Debian and derivatives, this is `apt install cmake qt6-base-dev libkf6iconthemes-dev libkf6kio-dev`.
+
+Then clone the repository and compile it,
 
 ```shell
 git clone https://github.com/jlu5/bookmarksync
 cd bookmarksync/src
-qmake
+cmake .
 make -j$(nproc)
 ```
 
 The resulting binary will be named `bookmarksync`.
-
-
-Alternatively, you can build the project (`bookmarksync.pro`) using Qt Creator.
-
 
 ## Under the hood
 

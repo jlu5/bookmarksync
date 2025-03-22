@@ -3,6 +3,10 @@
 #include "bookmarksync.h"
 #include "bookmarksynckdebackend.h"
 #include "place.h"
+#include "kio/global.h"
+
+#include <KFilePlacesModel>
+#include <KFilePlaceEditDialog>
 
 BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* parentWidget) :
     BookmarkSyncBackend(syncParent, parentWidget)

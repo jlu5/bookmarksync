@@ -3,16 +3,10 @@ kind: pipeline
 name: default
 
 steps:
-- name: build
-  image: debian:bookworm
+- name: build & test
+  image: debian:trixie
   commands:
     - apt-get update
-    - apt-get install -yy --no-install-recommends g++ make qtbase5-dev libkf5kio-dev
-    - cd src/ && qmake && make
-
-- name: test
-  image: debian:bookworm
-  commands:
-    - apt-get update
-    - apt-get install -yy --no-install-recommends kio libkf5kiofilewidgets5 python3
-    - python3 -m unittest discover test/ -v
+    - apt-get install -yy --no-install-recommends g++ cmake make qt6-base-dev libkf6iconthemes-dev libkf6kio-dev python3
+    - cd src/ && cmake . && make
+    - cd .. && python3 -m unittest discover test/ -v

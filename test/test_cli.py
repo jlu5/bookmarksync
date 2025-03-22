@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+import urllib.parse
 import xml.etree.ElementTree as ET
 
 class BookmarkSyncCliIntegrationTest(unittest.TestCase):
@@ -20,15 +21,22 @@ class BookmarkSyncCliIntegrationTest(unittest.TestCase):
         ('file:///home', 'Home Sweet Home'),
         ('file:///mnt/externaldrive', 'externaldrive'),
         ('file:///var/www', 'www'),
+        ('file:///home/james/' + urllib.parse.quote('你好，世界'), '你好，世界123'),
         ('sftp://example.com/home/james', 'remote server'),
     ]
-    TEST_PLACES_FROM_QT = [(pair[0], os.path.basename(pair[0])) for pair in TEST_PLACES[:-1]]
+    TEST_PLACES_FROM_QT = [
+        ('file:///home', 'home'),
+        ('file:///mnt/externaldrive', 'externaldrive'),
+        ('file:///var/www', 'www'),
+        ('file:///home/james/' + urllib.parse.quote('你好，世界'), '你好，世界'),
+    ]
     maxDiff = None
 
     @classmethod
     def setUpClass(cls):
         os.chdir(os.path.dirname(os.path.abspath(__file__)))
-        cls.tmpdir = tempfile.TemporaryDirectory()
+        preserve_files = os.environ.get('KEEP_TMP')
+        cls.tmpdir = tempfile.TemporaryDirectory(delete=not preserve_files)
 
     @staticmethod
     def runBookmarkSync(testDir, *args):
@@ -92,8 +100,9 @@ class BookmarkSyncCliIntegrationTest(unittest.TestCase):
         config.read(filename)
         shortcuts = config['FileDialog']['shortcuts']
         # Qt doesn't support custom names or non-local places (i.e. not file://)
+        # It also appears to not percent-encode URIs
         expectedHrefs = [
-            pair[0] for pair in expectedPlaces if pair[0].startswith('file://')
+            urllib.parse.unquote(pair[0]) for pair in expectedPlaces if pair[0].startswith('file://')
         ]
         actualHrefs = shortcuts.split(', ')
         print('verifyQt expected places:', expectedHrefs)
