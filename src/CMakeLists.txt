@@ -42,12 +42,5 @@ install(TARGETS bookmarksync
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-qt_generate_deploy_app_script(
-    TARGET bookmarksync
-    OUTPUT_SCRIPT deploy_script
-    NO_UNSUPPORTED_PLATFORM_ERROR
-)
-install(SCRIPT ${deploy_script})
-
 install(FILES ../bookmarksync.desktop
         DESTINATION share/applications)
