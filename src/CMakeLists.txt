@@ -48,3 +48,6 @@ qt_generate_deploy_app_script(
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
 install(SCRIPT ${deploy_script})
+
+install(FILES ../bookmarksync.desktop
+        DESTINATION share/applications)
