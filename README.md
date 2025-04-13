@@ -42,7 +42,7 @@ Then clone the repository and compile it:
 
 ```shell
 git clone https://github.com/jlu5/bookmarksync
-cd bookmarksync/src
+cd bookmarksync
 cmake .
 make -j$(nproc)
 ```

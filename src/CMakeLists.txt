@@ -41,6 +41,3 @@ install(TARGETS bookmarksync
     BUNDLE DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-
-install(FILES ../bookmarksync.desktop
-        DESTINATION share/applications)
