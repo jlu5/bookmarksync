@@ -8,8 +8,6 @@
 #include "backendwidget.h"
 
 #include <QMainWindow>
-#include <QDebug>
-#include <QListView>
 
 namespace Ui {
 class BookmarkSyncMainWindow;

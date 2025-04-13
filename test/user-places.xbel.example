@@ -107,6 +107,17 @@
    </metadata>
   </info>
  </bookmark>
+ <bookmark href="file:///home/james/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C">
+  <title>你好，世界123</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="inode-directory"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1694983480/8</ID>
+   </metadata>
+  </info>
+ </bookmark>
  <bookmark href="sftp://example.com/home/james">
   <title>remote server</title>
   <info>
@@ -114,7 +125,7 @@
     <bookmark:icon name="application-octet-stream"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1694983480/8</ID>
+    <ID>1694983480/9</ID>
    </metadata>
   </info>
  </bookmark>

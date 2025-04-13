@@ -5,10 +5,6 @@
 
 #include "bookmarksyncbackend.h"
 #include "kdeplacefilterproxymodel.h"
-#include "kio/global.h"
-
-#include <KFilePlacesModel>
-#include <KFilePlaceEditDialog>
 
 class BookmarkSyncKDEBackend : public BookmarkSyncBackend
 {
@@ -30,7 +26,7 @@ public:
 protected:
     Place getPlaceAtIndex(const QModelIndex& index) const override;
 
-private:    
+private:
     KFilePlacesModel* model;
     KDEPlaceFilterProxyModel* filteredModel;
 

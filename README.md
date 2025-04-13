@@ -2,11 +2,15 @@
 
 [![latest release](https://img.shields.io/github/v/tag/jlu5/bookmarksync?sort=date)](https://github.com/jlu5/bookmarksync/tags)
 
-**BookmarkSync** is a simple program that manages the bookmarks (pinned folders) in GTK+, KDE, and Qt 5's native file pickers. I built this tool because I was using GTK+ apps (GIMP, Audacity, etc.) on KDE and constantly got frustrated by the bookmarks lists not matching up.
+**BookmarkSync** is a simple program that manages the bookmarks (pinned folders) in GTK+, KDE, and Qt's native file pickers. I built this tool because I was using GTK+ apps (GIMP, Audacity, etc.) on KDE and constantly got frustrated by the bookmarks lists not matching up.
 
 ![Demo screenshot](bookmarksync.png "BookmarkSync main window")
 
-Note: BookmarkSync is one solution to this problem, though there are other alternatives too that may work depending on the program, such as [xdg-desktop-portal](https://github.com/flatpak/xdg-desktop-portal) or setting `QT_QPA_PLATFORMTHEME=gtk2` on GTK+ based desktop environments.
+## Do I need this?
+
+On GTK+ based desktop environments like GNOME or Xfce, you can make Qt use the GTK+ file picker by setting `QT_QPA_PLATFORMTHEME=gtk3` or `QT_QPA_PLATFORMTHEME=gtk2`. This is usually the easiest option on those environments.
+
+Alternatively: Chrome, Firefox ([with `about:config` override](https://wiki.archlinux.org/title/Firefox#XDG_Desktop_Portal_integration)), and most sandboxed apps support [XDG Desktop Portal](https://wiki.archlinux.org/title/XDG_Desktop_Portal) which will automatically load the desktop environment's native file picker.
 
 ## CLI mode
 
@@ -23,24 +27,27 @@ You can find bookmarksync in:
 
 ## Build instructions
 
-To compile BookmarkSync you will need qmake and the headers for KIO.
+**Note that BookmarkSync compiles with Qt 6 and KF6 now. If you need the Qt 5 version, use the `qt5` / 0.3.x branch instead.**
 
-On Debian and derivatives, this is `apt install qtbase5-dev libkf5kio-dev`.
+To compile BookmarkSync, you will need:
 
-Then,
+- cmake
+- Qt 6
+- KF6KIO headers
+- KF6IconThemes headers
+
+On Debian and derivatives, this is `apt install cmake qt6-base-dev libkf6iconthemes-dev libkf6kio-dev`.
+
+Then clone the repository and compile it:
 
 ```shell
 git clone https://github.com/jlu5/bookmarksync
-cd bookmarksync/src
-qmake
+cd bookmarksync
+cmake .
 make -j$(nproc)
 ```
 
 The resulting binary will be named `bookmarksync`.
-
-
-Alternatively, you can build the project (`bookmarksync.pro`) using Qt Creator.
-
 
 ## Under the hood
 
@@ -52,4 +59,4 @@ Alternatively, you can build the project (`bookmarksync.pro`) using Qt Creator.
 
 - Only KDE supports custom icons for places; syncing from others will erase all custom icons.
 - Only GTK+ and KDE support remote locations like `sftp://` or `smb://` in bookmarks: syncing *from* Qt will remove all remote places from the list.
-- Editing bookmarks from another program while BookmarkSync is running may cause things to go out of sync. This mainly affects the Qt backend, as the KDE and GTK+ backends tend to sync faster.
+- Editing bookmarks from another program while BookmarkSync is running may cause things to go out of sync. This mainly affects the Qt backend, as the KDE and GTK+ backends tend to refresh faster.
