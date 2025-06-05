@@ -1,5 +1,3 @@
-// BookmarkSyncGTKBackend: Qt bookmarks backend (via QFileDialog)
-
 #include "bookmarksyncqtbackend.h"
 
 #include <QFileDialog>

@@ -1,5 +1,3 @@
-// BookmarkSyncGTKBackend: GTK+ bookmarks backend (via raw file access)
-
 #include "bookmarksyncgtkbackend.h"
 
 #include <QStandardPaths>

@@ -1,4 +1,4 @@
-// BookmarkSyncQtBackend: Qt bookmarks backend
+// BookmarkSyncQtBackend: Qt bookmarks backend (via QFileDialog)
 
 #ifndef BOOKMARKSYNCQTBACKEND_H
 #define BOOKMARKSYNCQTBACKEND_H

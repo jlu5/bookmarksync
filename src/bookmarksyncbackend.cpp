@@ -1,5 +1,3 @@
-// BookmarkSyncBackend: base class for bookmarks backends
-
 #include "bookmarksyncbackend.h"
 #include "bookmarksync.h"
 #include "placeeditdialog.h"
