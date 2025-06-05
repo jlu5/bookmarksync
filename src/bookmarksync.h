@@ -31,9 +31,6 @@ protected:
 private:
     Ui::BookmarkSyncMainWindow* ui;
 
-    BackendWidget* kdeBackendWidget;
-    BackendWidget* gtkBackendWidget;
-    BackendWidget* qtBackendWidget;
     QMap<QString, BookmarkSyncBackend*> backends;
 };
 
