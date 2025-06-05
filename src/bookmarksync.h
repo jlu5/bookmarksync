@@ -5,7 +5,6 @@
 
 #include "place.h"
 #include "bookmarksyncbackend.h"
-#include "backendwidget.h"
 
 #include <QMainWindow>
 

@@ -11,7 +11,7 @@ BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, Backend
     BookmarkSyncBackend(syncParent, widget)
 {
     model = new PlacesItemModel(this);
-    listView->setModel(model);
+    widget->listView->setModel(model);
     // Try to load ~/.config/gtk-3.0/bookmarks
     QDir targetFolder = QDir(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
     if (targetFolder.mkpath("gtk-3.0")) {
@@ -24,12 +24,6 @@ BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, Backend
 
     QObject::connect(monitor, &QFileSystemWatcher::fileChanged, this, &BookmarkSyncGTKBackend::onFileChanged);
     loadPlaces();
-
-    QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onAddButtonClicked);
-    QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onEditButtonClicked);
-    QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onRemoveButtonClicked);
-    QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onSyncButtonClicked);
-    QObject::connect(widget->listView, &QListView::doubleClicked, this, &BookmarkSyncGTKBackend::onDoubleClicked);
     QObject::connect(model, &PlacesItemModel::rowsRemoved, this, &BookmarkSyncGTKBackend::onRowsRemoved);
 }
 

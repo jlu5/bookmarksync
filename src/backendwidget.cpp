@@ -15,6 +15,12 @@ BackendWidget::BackendWidget(QWidget *parent) :
     editButton = ui->editButton;
     removeButton = ui->removeButton;
     syncButton = ui->syncButton;
+
+    listView->setDragDropMode(QAbstractItemView::InternalMove);
+    listView->setSelectionMode(QAbstractItemView::SingleSelection);
+    listView->setDragEnabled(true);
+    listView->viewport()->setAcceptDrops(true);
+    listView->setDropIndicatorShown(true);
 }
 
 BackendWidget::~BackendWidget()

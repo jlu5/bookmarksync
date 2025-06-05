@@ -7,17 +7,10 @@ BookmarkSyncQtBackend::BookmarkSyncQtBackend(BookmarkSync* parent, BackendWidget
     BookmarkSyncBackend(parent, widget)
 {
     model = new PlacesItemModel(this);
-    listView->setModel(model);
+    widget->listView->setModel(model);
 
     loadPlaces();
-
-    QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncQtBackend::onAddButtonClicked);
-    QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncQtBackend::onEditButtonClicked);
-    QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncQtBackend::onRemoveButtonClicked);
-    QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncQtBackend::onSyncButtonClicked);
-    QObject::connect(widget->listView, &QListView::doubleClicked, this, &BookmarkSyncQtBackend::onDoubleClicked);
 }
-
 
 void BookmarkSyncQtBackend::loadPlaces() {
     QFileDialog* dialog = new QFileDialog(widget);
