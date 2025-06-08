@@ -4,7 +4,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 
-static QString VERSION = "0.4.0-dev";
+const QString VERSION = "0.4.0";
 
 int main(int argc, char *argv[])
 {

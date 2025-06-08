@@ -1,5 +1,10 @@
 # BookmarkSync Changelog
 
+## 0.4.0 (2025-06-08)
+
+- Port to Qt 6 and cmake
+- Ignore hidden places in the KDE backend
+
 ## 0.3.0 (2023-10-18)
 
 - Add `--sync-from/-f` CLI flag to run sync without GUI
