@@ -4,20 +4,10 @@
 #include <QUrl>
 
 BookmarkSyncQtBackend::BookmarkSyncQtBackend(BookmarkSync* parent, BackendWidget* widget) :
-    BookmarkSyncBackend(parent, widget)
+    BookmarkSyncGenericBackend(parent, widget)
 {
-    model = new PlacesItemModel(this);
-    listView->setModel(model);
-
     loadPlaces();
-
-    QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncQtBackend::onAddButtonClicked);
-    QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncQtBackend::onEditButtonClicked);
-    QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncQtBackend::onRemoveButtonClicked);
-    QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncQtBackend::onSyncButtonClicked);
-    QObject::connect(widget->listView, &QListView::doubleClicked, this, &BookmarkSyncQtBackend::onDoubleClicked);
 }
-
 
 void BookmarkSyncQtBackend::loadPlaces() {
     QFileDialog* dialog = new QFileDialog(widget);
@@ -47,37 +37,4 @@ void BookmarkSyncQtBackend::writePlaces() {
     dialog->setSidebarUrls(urls);
     delete dialog;
     loadPlaces(); // refresh our local view, in case there is any mismatch
-}
-
-Place BookmarkSyncQtBackend::getPlaceAtIndex(const QModelIndex& index) const {
-    return model->getPlace(index);
-}
-
-void BookmarkSyncQtBackend::addPlace(Place place) {
-    addPlace(model->rowCount(), place);
-}
-
-void BookmarkSyncQtBackend::addPlace(int index, Place place) {
-    model->addPlace(index, place);
-    writePlaces();
-}
-
-void BookmarkSyncQtBackend::editPlace(int index, Place place) {
-    model->editPlace(index, place);
-    writePlaces();
-}
-
-void BookmarkSyncQtBackend::removePlace(int index) {
-    model->removePlace(index);
-    writePlaces();
-}
-
-QVector<Place> BookmarkSyncQtBackend::getPlaces() const {
-    return model->getPlaces();
-}
-
-// Replaces all places in this backend with the given list
-void BookmarkSyncQtBackend::replace(const QVector<Place>& places) {
-    model->replace(places);
-    writePlaces();
 }

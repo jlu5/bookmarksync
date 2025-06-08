@@ -26,13 +26,13 @@
       <bool>false</bool>
      </property>
      <property name="dragDropMode">
-      <enum>QAbstractItemView::InternalMove</enum>
+      <enum>QAbstractItemView::DragDropMode::InternalMove</enum>
      </property>
      <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectItems</enum>
+      <enum>QAbstractItemView::SelectionBehavior::SelectItems</enum>
      </property>
      <property name="movement">
-      <enum>QListView::Free</enum>
+      <enum>QListView::Movement::Free</enum>
      </property>
     </widget>
    </item>
@@ -47,8 +47,7 @@
         <string>Add</string>
        </property>
        <property name="icon">
-        <iconset theme="list-add">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="list-add"/>
        </property>
       </widget>
      </item>
@@ -58,11 +57,10 @@
         <string>Edit currently selected Place</string>
        </property>
        <property name="text">
-        <string> Edit Selected</string>
+        <string>Edit selected</string>
        </property>
        <property name="icon">
-        <iconset theme="gtk-edit">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="gtk-edit"/>
        </property>
       </widget>
      </item>
@@ -72,32 +70,30 @@
         <string>Remove currently selected Place</string>
        </property>
        <property name="text">
-        <string>Remove Selected</string>
+        <string>Remove selected</string>
        </property>
        <property name="icon">
-        <iconset theme="list-remove">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="list-remove"/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="syncButton">
        <property name="toolTip">
-        <string>Copy to other side</string>
+        <string>Sync from this backend</string>
        </property>
        <property name="text">
         <string>Sync from this backend</string>
        </property>
        <property name="icon">
-        <iconset theme="view-refresh">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="view-refresh"/>
        </property>
       </widget>
      </item>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>

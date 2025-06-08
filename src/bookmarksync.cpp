@@ -16,15 +16,11 @@ BookmarkSync::BookmarkSync(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    kdeBackendWidget = ui->kdeBackendWidget;
-    gtkBackendWidget = ui->gtkBackendWidget;
-    qtBackendWidget = ui->qtBackendWidget;
-
-    auto kdeBackend = new BookmarkSyncKDEBackend(this, kdeBackendWidget);
+    const auto kdeBackend = new BookmarkSyncKDEBackend(this, ui->kdeBackendWidget);
     backends.insert("kde", kdeBackend);
-    auto gtkBackend = new BookmarkSyncGTKBackend(this, gtkBackendWidget);
+    const auto gtkBackend = new BookmarkSyncGTKBackend(this, ui->gtkBackendWidget);
     backends.insert("gtk", gtkBackend);
-    auto qtBackend = new BookmarkSyncQtBackend(this, qtBackendWidget);
+    const auto qtBackend = new BookmarkSyncQtBackend(this, ui->qtBackendWidget);
     backends.insert("qt", qtBackend);
 
     QObject::connect(ui->actionAbout, &QAction::triggered, this, &BookmarkSync::about);

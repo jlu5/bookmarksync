@@ -1,31 +1,20 @@
-// BookmarkSyncQtBackend: Qt bookmarks backend
+// BookmarkSyncQtBackend: Qt bookmarks backend (via QFileDialog)
 
 #ifndef BOOKMARKSYNCQTBACKEND_H
 #define BOOKMARKSYNCQTBACKEND_H
 
 #include "bookmarksyncbackend.h"
-#include "placesitemmodel.h"
+#include "bookmarksyncgenericbackend.h"
 
-class BookmarkSyncQtBackend : public BookmarkSyncBackend
+class BookmarkSyncQtBackend : public BookmarkSyncGenericBackend
 {
 public:
     BookmarkSyncQtBackend(BookmarkSync* syncParent, BackendWidget* widget);
 
-    // Implemented functions
-    QVector<Place> getPlaces() const;
-    void addPlace(Place place);
-    void addPlace(int index, Place place);
-    void editPlace(int index, Place newData);
-    void removePlace(int index);
-    void replace(const QVector<Place>& places);
-
 protected:
-    Place getPlaceAtIndex(const QModelIndex& index) const;
+    void loadPlaces() override;
+    void writePlaces() override;
 
-private:
-    void loadPlaces();
-    void writePlaces();
-    PlacesItemModel* model;
 };
 
 #endif // BOOKMARKSYNCQTBACKEND_H

@@ -4,9 +4,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 
-// Tentative icon... we should really find our own
-static QString ICON_NAME = "view-list";
-static QString VERSION = "0.4.0-dev";
+const QString VERSION = "0.4.0";
 
 int main(int argc, char *argv[])
 {
@@ -38,7 +36,6 @@ int main(int argc, char *argv[])
         bookmarkSync.syncFrom(backend);
         return 0;
     } else {
-        bookmarkSync.setWindowIcon(QIcon::fromTheme(ICON_NAME));
         bookmarkSync.show();
         return app.exec();
     }

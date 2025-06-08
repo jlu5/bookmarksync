@@ -17,6 +17,7 @@ qt_add_executable(bookmarksync WIN32 MACOSX_BUNDLE
     backendwidget.cpp backendwidget.h backendwidget.ui
     bookmarksync.cpp bookmarksync.h bookmarksync.ui
     bookmarksyncbackend.cpp bookmarksyncbackend.h
+    bookmarksyncgenericbackend.cpp bookmarksyncgenericbackend.h
     bookmarksyncgtkbackend.cpp bookmarksyncgtkbackend.h
     bookmarksynckdebackend.cpp bookmarksynckdebackend.h
     bookmarksyncqtbackend.cpp bookmarksyncqtbackend.h

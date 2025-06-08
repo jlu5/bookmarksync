@@ -1,5 +1,3 @@
-// BookmarkSyncBackend: base class for bookmarks backends
-
 #include "bookmarksyncbackend.h"
 #include "bookmarksync.h"
 #include "placeeditdialog.h"
@@ -11,13 +9,11 @@
 BookmarkSyncBackend::BookmarkSyncBackend(BookmarkSync* parent, BackendWidget* widget) :
     parent(parent), widget(widget)
 {
-    listView = widget->listView;
-
-    listView->setDragDropMode(QAbstractItemView::InternalMove);
-    listView->setSelectionMode(QAbstractItemView::SingleSelection);
-    listView->setDragEnabled(true);
-    listView->viewport()->setAcceptDrops(true);
-    listView->setDropIndicatorShown(true);
+    QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onAddButtonClicked);
+    QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onEditButtonClicked);
+    QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onRemoveButtonClicked);
+    QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncBackend::onSyncButtonClicked);
+    QObject::connect(widget->listView, &QListView::doubleClicked, this, &BookmarkSyncBackend::onDoubleClicked);
 }
 
 // BUTTON HANDLER: Add a new place to the list
@@ -28,14 +24,14 @@ void BookmarkSyncBackend::onAddButtonClicked() {
     PlaceEditDialog dialog(label, url);
     if (dialog.exec()) {
         qDebug() << "Made new place" << label << "," << url;
-        QModelIndex current = listView->currentIndex();
+        QModelIndex current = widget->listView->currentIndex();
         addPlace(current.row(), Place{label, url});
     }
 }
 
 // BUTTON HANDLER: Edit the currently selected place
 void BookmarkSyncBackend::onEditButtonClicked() {
-    QModelIndex current = listView->currentIndex();
+    QModelIndex current = widget->listView->currentIndex();
     Place place = getPlaceAtIndex(current);
 
     qDebug() << "Current item has index" << current.row() << ":" << place.label << place.target;
@@ -50,7 +46,7 @@ void BookmarkSyncBackend::onEditButtonClicked() {
 
 // BUTTON HANDLER: Remove the currently selected place
 void BookmarkSyncBackend::onRemoveButtonClicked() {
-    QModelIndex current = listView->currentIndex();
+    QModelIndex current = widget->listView->currentIndex();
     removePlace(current.row());
 }
 

@@ -1,6 +1,3 @@
-// BookmarkSyncGTKBackend: GTK+ bookmarks backend (via raw file access)
-
-#include "bookmarksyncbackend.h"
 #include "bookmarksyncgtkbackend.h"
 
 #include <QStandardPaths>
@@ -8,10 +5,8 @@
 #include <QDebug>
 
 BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, BackendWidget* widget) :
-    BookmarkSyncBackend(syncParent, widget)
+    BookmarkSyncGenericBackend(syncParent, widget)
 {
-    model = new PlacesItemModel(this);
-    listView->setModel(model);
     // Try to load ~/.config/gtk-3.0/bookmarks
     QDir targetFolder = QDir(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
     if (targetFolder.mkpath("gtk-3.0")) {
@@ -24,12 +19,6 @@ BookmarkSyncGTKBackend::BookmarkSyncGTKBackend(BookmarkSync* syncParent, Backend
 
     QObject::connect(monitor, &QFileSystemWatcher::fileChanged, this, &BookmarkSyncGTKBackend::onFileChanged);
     loadPlaces();
-
-    QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onAddButtonClicked);
-    QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onEditButtonClicked);
-    QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onRemoveButtonClicked);
-    QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncGTKBackend::onSyncButtonClicked);
-    QObject::connect(widget->listView, &QListView::doubleClicked, this, &BookmarkSyncGTKBackend::onDoubleClicked);
     QObject::connect(model, &PlacesItemModel::rowsRemoved, this, &BookmarkSyncGTKBackend::onRowsRemoved);
 }
 
@@ -37,6 +26,11 @@ void BookmarkSyncGTKBackend::onFileChanged(const QString &) {
     qDebug() << "Got file changed!" << monitor->files();
     monitor->addPath(target); // Why is this needed?
     loadPlaces();
+}
+
+void BookmarkSyncGTKBackend::removePlace(int index) {
+    model->removePlace(index);
+    // writePlaces() will be called by onRowsRemoved handler
 }
 
 /* Remove handler: write the places after doing an internal move via drag and drop
@@ -87,41 +81,4 @@ void BookmarkSyncGTKBackend::writePlaces() {
         }
     }
     monitor->addPath(target);
-}
-
-// Returns a place instance given the model index
-Place BookmarkSyncGTKBackend::getPlaceAtIndex(const QModelIndex& index) const {
-    return model->getPlace(index);
-}
-
-// Adds a place to this backend
-void BookmarkSyncGTKBackend::addPlace(Place place) {
-    addPlace(model->rowCount(), place);
-}
-// Adds a place to this backend after the given index
-void BookmarkSyncGTKBackend::addPlace(int index, Place place) {
-    model->addPlace(index, place);
-    writePlaces();
-}
-
-// Edits the place at index
-void BookmarkSyncGTKBackend::editPlace(int index, Place place) {
-    model->editPlace(index, place);
-    writePlaces();
-}
-
-// Removes a place from this backend
-void BookmarkSyncGTKBackend::removePlace(int index) {
-    model->removePlace(index);
-    // writePlaces() will be called by onRowsRemoved handler
-}
-
-QVector<Place> BookmarkSyncGTKBackend::getPlaces() const {
-    return model->getPlaces();
-}
-
-// Replaces all places in this backend with the given list
-void BookmarkSyncGTKBackend::replace(const QVector<Place>& places) {
-    model->replace(places);
-    writePlaces();
 }

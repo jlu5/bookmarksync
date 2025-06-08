@@ -35,7 +35,6 @@ public:
 protected:
     BookmarkSync* parent;
     BackendWidget* widget;
-    QListView* listView;
 
     virtual Place getPlaceAtIndex(const QModelIndex& index) const = 0;
 

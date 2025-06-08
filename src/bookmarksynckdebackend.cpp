@@ -1,6 +1,4 @@
-﻿// BookmarkSyncKDEBackend: KDE bookmarks backend (via KFilePlacesModel)
-
-#include "bookmarksync.h"
+﻿#include "bookmarksync.h"
 #include "bookmarksynckdebackend.h"
 #include "place.h"
 #include "kio/global.h"
@@ -11,18 +9,10 @@
 BookmarkSyncKDEBackend::BookmarkSyncKDEBackend(BookmarkSync* syncParent, BackendWidget* parentWidget) :
     BookmarkSyncBackend(syncParent, parentWidget)
 {
-
     model = new KFilePlacesModel(widget);
     filteredModel = new KDEPlaceFilterProxyModel(model, widget);
-    listView->setModel(filteredModel);
-
-    QObject::connect(widget->addButton, &QAbstractButton::clicked, this, &BookmarkSyncKDEBackend::onAddButtonClicked);
-    QObject::connect(widget->editButton, &QAbstractButton::clicked, this, &BookmarkSyncKDEBackend::onEditButtonClicked);
-    QObject::connect(widget->removeButton, &QAbstractButton::clicked, this, &BookmarkSyncKDEBackend::onRemoveButtonClicked);
-    QObject::connect(widget->syncButton, &QAbstractButton::clicked, this, &BookmarkSyncKDEBackend::onSyncButtonClicked);
-    QObject::connect(widget->listView, &QListView::doubleClicked, this, &BookmarkSyncKDEBackend::onDoubleClicked);
+    widget->listView->setModel(filteredModel);
 }
-
 
 // Returns a list of places currently defined in this backend
 QVector<Place> BookmarkSyncKDEBackend::getPlaces() const {
@@ -63,7 +53,6 @@ void BookmarkSyncKDEBackend::editPlace(int index, Place place) {
     model->editPlace(realIndex, place.label, place.target, KIO::iconNameForUrl(place.target));
 }
 
-
 /*
  KFilePlaceEditDialog::KFilePlaceEditDialog 	( 	bool  	allowGlobal,
         const QUrl &  	url,
@@ -77,7 +66,7 @@ void BookmarkSyncKDEBackend::editPlace(int index, Place place) {
 */
 // Overridden add handler to use KFilePlaceEditDialog
 void BookmarkSyncKDEBackend::onAddButtonClicked() {
-    QModelIndex current = listView->currentIndex();
+    QModelIndex current = widget->listView->currentIndex();
     QString label;
     QUrl url;
     QString iconName = "folder";
@@ -94,7 +83,7 @@ void BookmarkSyncKDEBackend::onAddButtonClicked() {
 
 // Overridden edit handler to use KFilePlaceEditDialog
 void BookmarkSyncKDEBackend::onEditButtonClicked() {
-    QModelIndex current = listView->currentIndex();
+    QModelIndex current = widget->listView->currentIndex();
 
     QString label = current.data().toString();
     QUrl url = current.data(KFilePlacesModel::UrlRole).toUrl();
