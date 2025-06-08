@@ -107,6 +107,18 @@
    </metadata>
   </info>
  </bookmark>
+ <bookmark href="file:///etc/test/">
+  <title>example hidden place</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="inode-directory"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1694983480/8</ID>
+    <IsHidden>true</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
  <bookmark href="file:///home/james/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C">
   <title>你好，世界123</title>
   <info>
@@ -114,7 +126,7 @@
     <bookmark:icon name="inode-directory"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1694983480/8</ID>
+    <ID>1694983480/9</ID>
    </metadata>
   </info>
  </bookmark>
@@ -125,7 +137,7 @@
     <bookmark:icon name="application-octet-stream"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1694983480/9</ID>
+    <ID>1694983480/10</ID>
    </metadata>
   </info>
  </bookmark>
