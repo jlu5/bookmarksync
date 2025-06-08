@@ -4,7 +4,7 @@
 
 **BookmarkSync** is a simple program that manages the bookmarks (pinned folders) in GTK+, KDE, and Qt's native file pickers. I built this tool because I was using GTK+ apps (GIMP, Audacity, etc.) on KDE and constantly got frustrated by the bookmarks lists not matching up.
 
-![Demo screenshot](bookmarksync.png "BookmarkSync main window")
+![Demo screenshot](bookmarksync-demo.png "BookmarkSync main window")
 
 ## Do I need this?
 
