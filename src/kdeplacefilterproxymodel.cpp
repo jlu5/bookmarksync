@@ -1,7 +1,6 @@
 // KDEPlaceFilterProxyModel: KIO Places filter proxy to only show local directories and remote locations
 
 #include "kdeplacefilterproxymodel.h"
-#include <QDebug>
 
 KDEPlaceFilterProxyModel::KDEPlaceFilterProxyModel(KFilePlacesModel* sourceModel, QObject *parent)
     : QSortFilterProxyModel(parent) {
@@ -21,5 +20,6 @@ bool KDEPlaceFilterProxyModel::filterAcceptsRow(
     KBookmark bookmark = source->bookmarkForIndex(targetIndex);
     return (groupType == KFilePlacesModel::GroupType::PlacesType
             || groupType == KFilePlacesModel::GroupType::RemoteType)
-            && bookmark.metaDataItem("isSystemItem") != "true";
+            && bookmark.metaDataItem("isSystemItem") != "true"
+            && bookmark.metaDataItem("IsHidden") != "true";
 };
