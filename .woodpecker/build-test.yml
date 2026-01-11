@@ -1,12 +1,14 @@
 ---
-kind: pipeline
-name: default
 
 steps:
 - name: build & test
   image: debian:trixie
   commands:
     - apt-get update
+    # Build and test are in one step to avoid installing dependencies twice
     - apt-get install -yy --no-install-recommends g++ cmake make qt6-base-dev libkf6iconthemes-dev libkf6kio-dev python3
     - cd src/ && cmake . && make
     - cd .. && python3 -m unittest discover test/ -v
+  when:
+    - branch: "**"
+      event: push
