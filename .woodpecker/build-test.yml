@@ -12,3 +12,4 @@ steps:
   when:
     - branch: "**"
       event: push
+    - event: [tag, pull_request]
